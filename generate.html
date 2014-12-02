@@ -1,0 +1,379 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+  <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <script type="text/javascript">
+    function p(string,redraw){
+      if(redraw){
+        document.getElementById("logger").innerHTML = "" 
+      }       
+      document.getElementById("logger").innerHTML = "<br>"
+      document.getElementById("logger").innerHTML += string
+    }
+    function show_area(id,status){
+      if(status){document.getElementById(id).style.display="inline"}
+      else{document.getElementById(id).style.display="none"}
+    }
+    function show_with_button(id1,id2,status){
+      show_area(id1,status)
+    }
+    function close_check(name,pos,status){
+      if(status){document.getElementsByName(name)[pos].checked = false}
+    }
+    function get_result(result_array){
+      var result = "<strong>站点名称：</strong>" + result_array[0] + "</p><p>"
+      result += "<strong>站长：</strong>" + result_array[1] + "</p><p>"
+      result += "<strong>站点地址：</strong>" + result_array[2] + "</p><p>"
+      result += "<strong>语言：</strong>" + result_array[3] + "</p><p>"
+      result += "<strong>墙？：</strong>" + result_array[4] + "</p><p>"
+      result += "<strong>素材内容：</strong>" + result_array[5] + "</p><p>"
+      result += "<strong>素材地址：</strong>" + result_array[6] + "</p><p>"
+      result += "<strong>素材利用规约：</strong></p><blockquote><p><strong>原文</strong>" + "</p><p>"
+      result += result_array[7] + '</p><p>'
+      result += '<a href="http://rmtemp.lofter.com/post/3e26fe_156e50a" target="_blank">基本规则</a>'
+      result += '</p><p>' + result_array[8]
+      result += "</p>（翻译By " + result_array[9]
+      result += " 最终翻译确认时间 " + result_array[10] + "）</p></blockquote><p>"
+      result += "<strong>备注：</strong></p><p>" + result_array[11]
+      return result
+    }
+    function url_format(url,name){
+      var result = '<a href="' + url + '" target="_blank">' 
+      if(name){result += name + '</a>'}
+      else{result += url + '</a>'}
+      return result
+    }
+    function add_new_content(result,string){
+      if (result != ""){result += "、"}
+      return result + string
+    }
+    function get_list(array_base,name_list,array_more){
+      var array = document.getElementsByName(array_base)
+      var result = ""
+      var size = array.length
+      if(array_more){size -= 1}
+      for(var i = 0 ; i < size ; i++){
+        if(array[i].checked){result = add_new_content(result,name_list[i])}  
+      }      
+      if(array_more){
+        if(array[size].checked){
+          result = add_new_content(result,document.getElementsByName(array_more)[0].value)
+        }
+      }
+      return result
+    }    
+    function get_time(){      
+      var date = new Date()
+      var string = ""
+      string += date.getFullYear() + '.'
+      string += (date.getMonth()+1) + '.'
+      string += date.getDate()
+      return string
+    }
+    function get_content_list(){
+      var result = ""      
+      var array = document.getElementsByName("material")
+      if(array[0].checked){
+        result = add_new_content(result,get_list("gra_mat",["脸图素材","行走图素材","地图图块素材","战斗图素材","图标素材","动画素材"],"other_gra")
+        )
+      }
+      if(array[1].checked){
+        result = add_new_content(result,get_list("aud_mat",["音乐素材","音效素材"],"other_aud"))
+      }
+      if(array[2].checked){
+        result = add_new_content(result,get_list("scr_mat",["RGSS1","RGSS2","RGSS3"],"other_scr"))
+      }
+      if(array[3].checked){
+        result = add_new_content(result,document.getElementsByName("other_mat")[0].value)
+      }
+      return result
+    }
+    function rule_foramt(rule){
+      var result = ""
+      var list = {
+        '需要署名' : 'http://rmtemp.lofter.com/post/3e26fe_156e50f',
+        '不需要署名' : 'http://rmtemp.lofter.com/post/3e26fe_156e513',
+        '不需要下载报告' : 'http://rmtemp.lofter.com/post/3e26fe_40beac5',
+        '不需要使用报告' : 'http://rmtemp.lofter.com/post/3e26fe_40beacb',
+        '不需要报告' : 'http://rmtemp.lofter.com/post/3e26fe_156f16f',
+        '需要下载报告' : 'http://rmtemp.lofter.com/post/3e26fe_156e526',
+        '需要使用报告' : 'http://rmtemp.lofter.com/post/3e26fe_156e52c',        
+        
+        '自由地用于收费游戏中（同人游戏）' : 'http://rmtemp.lofter.com/post/3e26fe_156e531',
+        '自由地用于收费游戏中（商业游戏）' : 'http://rmtemp.lofter.com/post/3e26fe_156f10d',
+        '自由地用于收费游戏中（游戏类型未说明）' : 'http://rmtemp.lofter.com/post/3e26fe_167cd74',
+        '自由地用于共享软件中（暂时无法确定规约详情）' : 'http://rmtemp.lofter.com/post/3e26fe_1755db2',
+        '自由地用于收费游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_16780a8',
+        
+        '自由地用于参加比赛的游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_1678067',
+        '自由地用于特殊题材的游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_1677fd6',
+        
+        '自由地用于任何游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_156f11b',
+        '禁止用于以营利为目的的游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_160288a',
+        '禁止用于题材不适当的游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_160285e',
+        '禁止用于商业游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_16018a5',
+
+        '限制使用素材的软件' : 'http://rmtemp.lofter.com/post/3e26fe_156f12d',
+        '允许加工' : 'http://rmtemp.lofter.com/post/3e26fe_156f131',
+        '允许在不破坏素材的情况下进行加工' : 'http://rmtemp.lofter.com/post/3e26fe_156f136',
+
+        '可以自由地二次配布' : 'http://rmtemp.lofter.com/post/3e26fe_156f1c7',
+        '加工后可发布' : 'http://rmtemp.lofter.com/post/3e26fe_156f1ae',
+        '禁止转载·二次配布' : 'http://rmtemp.lofter.com/post/3e26fe_167cd92'
+      }
+      return url_format(list[rule],rule) + "</p><p>"
+    }
+    function get_rule_list(){
+      var result = ""
+      var array
+      array = document.getElementsByName("r1")
+      if(array[0].checked){result += rule_foramt('不需要署名') }
+        if(array[1].checked && array[2].checked){result += rule_foramt('不需要报告') }
+      else{
+        if(array[1].checked){result += rule_foramt('不需要下载报告') }
+        if(array[2].checked){result += rule_foramt('不需要使用报告') }
+      }
+      if(array[3].checked){result += rule_foramt('需要署名') }
+      if(array[4].checked){result += rule_foramt('需要下载报告') }
+      if(array[5].checked){result += rule_foramt('需要使用报告') }
+
+      array = [document.getElementsByName("r4"),document.getElementsByName("r5"),document.getElementsByName("r6")]
+
+      if(array[0][0].checked && array[0][1].checked && array[0][2].checked && array[0][3].checked && array[1][0].checked && array[1][1].checked){result += rule_foramt('自由地用于任何游戏中')}
+      else{        
+        if(array[0][0].checked && array[1][0].checked && array[1][1].checked){
+          result += rule_foramt('自由地用于收费游戏中')
+        }
+        if(array[0][0].checked && array[1][0].checked && !array[1][1].checked){
+          result += rule_foramt('自由地用于收费游戏中（同人游戏）')
+        }
+        if(array[0][0].checked && !array[1][0].checked && array[1][1].checked){
+          result += rule_foramt('自由地用于收费游戏中（商业游戏）')
+        }
+        if(array[0][0].checked && !array[1][0].checked && !array[1][1].checked){
+          result += rule_foramt('自由地用于收费游戏中（游戏类型未说明）')
+        }
+        if(array[0][1].checked){
+          if(!array[0][0].checked){result += rule_foramt('自由地用于共享软件中（暂时无法确定规约详情）')}
+          if(array[0][0].checked && !(array[1][0].checked && array[1][1].checked)){
+            result += rule_foramt('自由地用于共享软件中（暂时无法确定规约详情）')
+          }
+        }        
+        if(array[0][2].checked){result += rule_foramt('自由地用于参加比赛的游戏中') }
+        if(array[0][3].checked){result += rule_foramt('自由地用于特殊题材的游戏中') }
+      }
+
+      if(array[2][0].checked){result += rule_foramt('禁止用于以营利为目的的游戏中') }
+      if(array[2][1].checked){result += rule_foramt('禁止用于商业游戏中') }
+      if(array[2][2].checked){result += rule_foramt('禁止用于题材不适当的游戏中') }
+
+
+      array = document.getElementsByName("r2")
+      if(array[0].checked){result += rule_foramt('限制使用素材的软件') }
+      if(array[1].checked){
+        if(array[2].checked){result += rule_foramt('允许在不破坏素材的情况下进行加工')}
+        else{result += rule_foramt('允许加工') }
+      }
+
+      array = document.getElementsByName("r3")
+      if(array[0].checked){result += rule_foramt('可以自由地二次配布') }
+      if(array[1].checked){result += rule_foramt('加工后可发布') }
+      if(array[2].checked){result += rule_foramt('禁止转载·二次配布') }
+      
+      if (result == ""){
+        result = "暂时没有发现作者给出明确的规约，请在遵守基本规则的前提下使用这份素材。<br>"
+        result += "之后如果有确定的规约时会在这里进行更新。"
+      }      
+      return result
+    }
+
+    function show_result(){
+      var result_array = [0]
+      result_array[0] = document.getElementById("name").value
+      result_array[1] = document.getElementById("host").value      
+      result_array[2] = url_format(document.getElementById("url").value)      
+      result_array[3] = get_list("language",["日语","英语","中文"],"other_lan")
+      result_array[4] = get_list("gfw",["有","无"])      
+      result_array[5] = get_content_list()
+      result_array[6] = url_format(document.getElementById("addr").value)
+      result_array[7] = url_format(document.getElementById("rule").value)      
+      result_array[8] = get_rule_list()
+      result_array[9] = document.getElementById("up").value      
+      result_array[10] = get_time()
+      result_array[11] = document.getElementById("etc").value.replace(/\n/g,'</p><p>') + '</p>'
+      document.getElementById("result").value = get_result(result_array)
+      
+      p("预览结果<br><br>" + document.getElementById("result").value)
+    }
+  </script>
+</head>
+<body>
+  <!-- 最终结果 -->  
+  <div style="margin-left:500px;position:fixed;margin-top:20px">
+    <button onclick="show_result()">输出结果</button><br><br>
+    <textarea id="result" 
+      style="height:100px;width:400px" 
+      tabIndex="99"
+      onclick="this.focus();this.select()"></textarea>
+    <div id="logger" style="background-color:lavender ;margin-top:8px; height:200px; 
+                      width:400px; overflow-y:scroll">控制台</div>
+  </div>  
+  <table border="0" style="margin-left:50px">
+    <!-- 站点名称 -->
+    <tr><td>站点名称</td><td style="width:20px"></td><td><input id="name" style="width:300px"/></td></tr>
+    <!-- 站长 -->
+    <tr><td>站长</td><td></td><td><input id="host" style="width:300px"/></td></tr>
+    <!-- 站点地址 -->
+    <tr><td>站点地址</td><td></td><td><input id="url" style="width:300px"/></td></tr>
+    <!-- 语言 -->
+    <tr><td>语言</td><td></td><td>
+      <input name="language" type="checkbox" />日语<br>
+      <input name="language" type="checkbox" />英语<br>
+      <input name="language" type="checkbox" />中文<br>
+      <input name="language" type="checkbox" 
+        onclick='show_with_button("other_lan_area","other_lan_button",this.checked)'/>其他语言<br>
+      <div id="other_lan_area" style="display:none">
+        <input name="other_lan" style="margin-left:20px"/>
+      </div>
+      <button id="other_lan_button" style="display:none">+添加语言</button>
+    </td></tr>
+    <!-- 墙？ -->
+    <tr><td>墙？</td><td></td><td>
+      <input name="gfw" type="radio" />有<input name="gfw" type="radio" />无<br>
+    </td></tr>
+    <!-- 素材内容 -->
+    <tr><td>素材内容</td><td></td><td>
+      <!-- 图像素材 -->
+      <input name="material" type="checkbox" onclick='show_area("gra_mat_area",this.checked)'/>图像素材<br>
+        <div id="gra_mat_area" style="display:none">
+          <input name="gra_mat" type="checkbox" style="margin-left:20px"/>脸图素材<br>
+          <input name="gra_mat" type="checkbox" style="margin-left:20px"/>行走图素材<br>
+          <input name="gra_mat" type="checkbox" style="margin-left:20px"/>地图图块素材<br>
+          <input name="gra_mat" type="checkbox" style="margin-left:20px"/>战斗图素材<br>
+          <input name="gra_mat" type="checkbox" style="margin-left:20px"/>图标素材<br>
+          <input name="gra_mat" type="checkbox" style="margin-left:20px"/>动画素材<br>
+          <input name="gra_mat" type="checkbox" style="margin-left:20px"
+            onclick='show_with_button("other_gra_mat","other_gra_button",this.checked)'
+            />其他图像素材<br>
+          <div id="other_gra_mat" style="display:none">
+            <input name="other_gra" style="margin-left:20px"/><br>
+          </div>
+          <div id="other_gra_button" style="display:none">
+            <button>+添加素材</button><br>
+          </div>
+        </div>
+      <!-- 音乐素材 -->
+      <input name="material" type="checkbox" onclick='show_area("aud_mat_area",this.checked)'/>音乐素材<br>
+        <div id="aud_mat_area" style="display:none">
+          <input name="aud_mat" type="checkbox" style="margin-left:20px"/>音乐素材<br>
+          <input name="aud_mat" type="checkbox" style="margin-left:20px"/>音效素材<br>
+          <input name="aud_mat" type="checkbox" style="margin-left:20px"
+            onclick='show_with_button("other_aud_mat","other_aud_button",this.checked)'/>其他声音素材<br>
+          <div id="other_aud_mat" style="display:none">
+            <input name="other_aud" style="margin-left:20px"/><br>
+          </div>
+          <div id="other_aud_button" style="display:none">            
+            <button>+添加素材</button><br>
+          </div>
+        </div>
+      <!-- 脚本素材 -->
+      <input name="material" type="checkbox" onclick='show_area("scr_mat_area",this.checked)' />脚本素材<br>
+        <div id="scr_mat_area" style="display:none">
+          <input name="scr_mat" type="checkbox" style="margin-left:20px"/>RGSS1<br>
+          <input name="scr_mat" type="checkbox" style="margin-left:20px"/>RGSS2<br>
+          <input name="scr_mat" type="checkbox" style="margin-left:20px"/>RGSS3<br>
+          <input name="scr_mat" type="checkbox" style="margin-left:20px"
+            onclick='show_with_button("other_scr_mat","other_scr_button",this.checked)'/>其他脚本素材<br>
+          <div id="other_scr_mat" style="display:none">
+            <input name="other_scr" style="margin-left:20px"/><br>
+          </div>
+          <div id="other_scr_button" style="display:none">
+            <button>+添加素材</button><br>
+          </div>
+        </div>
+      <!-- 其他素材 -->
+      <input name="material" type="checkbox" 
+        onclick='show_with_button("other_material","other_mat_button",this.checked)'/>其他素材<br>
+        <div id="other_material" style="display:none">
+          <input name="other_mat" style="margin-left:20px"/><br>
+        </div>
+        <button id="other_mat_button" style="display:none">+添加素材</button>
+    </td></tr>
+    <!-- 素材地址 -->
+    <tr><td>素材地址</td><td></td><td><input id="addr" style="width:300px"/></td></tr>
+    <!-- 规约原文 -->
+    <tr><td>规约原文</td><td></td><td><input id="rule" style="width:300px"/></td></tr>
+    <!-- 使用规约 -->
+    <tr><td>使用规约</td><td></td><td>
+
+      <hr>一、与素材作者有关的相关规定<br><hr>
+      不需要<br>
+        <input name="r1" type="checkbox" style="margin-left:20px" 
+          onclick='close_check("r1",3,this.checked)'/>署名</input><br>
+        <input name="r1" type="checkbox" style="margin-left:20px"
+          onclick='close_check("r1",4,this.checked)'/>下载报告</input><br>
+        <input name="r1" type="checkbox" style="margin-left:20px"
+          onclick='close_check("r1",5,this.checked)'/>使用报告</input><br>
+      需要<br>
+        <input name="r1" type="checkbox" style="margin-left:20px"
+          onclick='close_check("r1",0,this.checked)'/>署名</input><br>
+        <input name="r1" type="checkbox" style="margin-left:20px"
+          onclick='close_check("r1",1,this.checked)'/>下载报告</input><br>
+        <input name="r1" type="checkbox" style="margin-left:20px"
+          onclick='close_check("r1",2,this.checked)'/>使用报告</input><br>
+
+      <hr>二、对于游戏类型的相关规定<br><hr>
+      允许的游戏类型<br>
+        <input name="r4" type="checkbox" style="margin-left:20px"
+          onclick='close_check("r6",0,this.checked);show_area("com_game_area",this.checked)'/>收费游戏</input><br>
+        <div id="com_game_area" style="display:none">
+          <input name="r5" type="checkbox" style="margin-left:40px"/>同人游戏</input><br>
+          <input name="r5" type="checkbox" style="margin-left:40px"
+            onclick='close_check("r6",1,this.checked)'/>商业游戏</input><br>
+        </div>
+        <input name="r4" type="checkbox" style="margin-left:20px"
+          onclick='close_check("r6",0,this.checked)'/>共享软件</input><br>
+        <input name="r4" type="checkbox" style="margin-left:20px"/>参加比赛的游戏</input><br>
+        <input name="r4" type="checkbox" style="margin-left:20px"
+          onclick='close_check("r6",2,this.checked)'/>特殊题材的游戏</input><br>
+      不允许的游戏类型<br>
+        <input name="r6" type="checkbox" style="margin-left:20px"
+          onclick='          
+          close_check("r4",0,this.checked);
+          close_check("r4",1,this.checked);
+          if (this.checked){            
+            show_area("com_game_area",false)
+            document.getElementsByName("r5")[0].checked = false
+            document.getElementsByName("r5")[1].checked = false
+          }
+          '/>
+          以营利为目的游戏</input><br>
+        <input name="r6" type="checkbox" style="margin-left:20px"
+          onclick='close_check("r5",1,this.checked)'/>商业游戏</input><br>
+        <input name="r6" type="checkbox" style="margin-left:20px"
+          onclick='close_check("r4",3,this.checked)'/>特殊题材的游戏</input><br>
+
+      <hr>三、素材使用/加工<br><hr>
+        <input name="r2" type="checkbox" style="margin-left:20px"/>包含RM素材改造素材</input><br>
+        <input name="r2" type="checkbox" style="margin-left:20px"
+          onclick='
+            if(this.checked){document.getElementsByName("r2")[2].disabled = false}
+            else{
+              document.getElementsByName("r2")[2].disabled = true
+              document.getElementsByName("r2")[2].checked = false
+            }
+          '/>允许加工</input><br>
+        <input name="r2" type="checkbox" disabled="true" style="margin-left:40px"/>不能破坏素材</input><br>
+
+      <hr>四、对于二次配布·转载的相关规定<br><hr>      
+        <input name="r3" type="radio" style="margin-left:20px">可以自由的二次配布</input><br>
+        <input name="r3" type="radio" style="margin-left:20px">加工后可发布</input><br>
+        <input name="r3" type="radio" style="margin-left:20px">禁止转载·二次配布</input><br>        
+    </td></tr>
+    <!-- 翻译者 -->
+    <tr><td>翻译者</td><td></td><td><input id="up" style="width:300px"/></td></tr>
+    <!-- 备注 -->
+    <tr><td>备注</td><td></td><td><textarea id="etc" style="width:300px;height:150px"></textarea></td></tr>    
+  </table>  
+</body>
+</html>
