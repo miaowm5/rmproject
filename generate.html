@@ -5,8 +5,8 @@
   <script type="text/javascript">
     function p(string,redraw){
       if(redraw){
-        document.getElementById("logger").innerHTML = "" 
-      }       
+        document.getElementById("logger").innerHTML = ""
+      }
       document.getElementById("logger").innerHTML = "<br>"
       document.getElementById("logger").innerHTML += string
     }
@@ -38,7 +38,7 @@
       return result
     }
     function url_format(url,name){
-      var result = '<a href="' + url + '" target="_blank">' 
+      var result = '<a href="' + url + '" target="_blank">'
       if(name){result += name + '</a>'}
       else{result += url + '</a>'}
       return result
@@ -53,16 +53,16 @@
       var size = array.length
       if(array_more){size -= 1}
       for(var i = 0 ; i < size ; i++){
-        if(array[i].checked){result = add_new_content(result,name_list[i])}  
-      }      
+        if(array[i].checked){result = add_new_content(result,name_list[i])}
+      }
       if(array_more){
         if(array[size].checked){
           result = add_new_content(result,document.getElementsByName(array_more)[0].value)
         }
       }
       return result
-    }    
-    function get_time(){      
+    }
+    function get_time(){
       var date = new Date()
       var string = ""
       string += date.getFullYear() + '.'
@@ -71,7 +71,7 @@
       return string
     }
     function get_content_list(){
-      var result = ""      
+      var result = ""
       var array = document.getElementsByName("material")
       if(array[0].checked){
         result = add_new_content(result,get_list("gra_mat",["脸图素材","行走图素材","地图图块素材","战斗图素材","图标素材","动画素材"],"other_gra")
@@ -97,17 +97,17 @@
         '不需要使用报告' : 'http://rmtemp.lofter.com/post/3e26fe_40beacb',
         '不需要报告' : 'http://rmtemp.lofter.com/post/3e26fe_156f16f',
         '需要下载报告' : 'http://rmtemp.lofter.com/post/3e26fe_156e526',
-        '需要使用报告' : 'http://rmtemp.lofter.com/post/3e26fe_156e52c',        
-        
+        '需要使用报告' : 'http://rmtemp.lofter.com/post/3e26fe_156e52c',
+
         '自由地用于收费游戏中（同人游戏）' : 'http://rmtemp.lofter.com/post/3e26fe_156e531',
         '自由地用于收费游戏中（商业游戏）' : 'http://rmtemp.lofter.com/post/3e26fe_156f10d',
         '自由地用于收费游戏中（游戏类型未说明）' : 'http://rmtemp.lofter.com/post/3e26fe_167cd74',
         '自由地用于共享软件中（暂时无法确定规约详情）' : 'http://rmtemp.lofter.com/post/3e26fe_1755db2',
         '自由地用于收费游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_16780a8',
-        
+
         '自由地用于参加比赛的游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_1678067',
         '自由地用于特殊题材的游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_1677fd6',
-        
+
         '自由地用于任何游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_156f11b',
         '禁止用于以营利为目的的游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_160288a',
         '禁止用于题材不适当的游戏中' : 'http://rmtemp.lofter.com/post/3e26fe_160285e',
@@ -140,7 +140,7 @@
       array = [document.getElementsByName("r4"),document.getElementsByName("r5"),document.getElementsByName("r6")]
 
       if(array[0][0].checked && array[0][1].checked && array[0][2].checked && array[0][3].checked && array[1][0].checked && array[1][1].checked){result += rule_foramt('自由地用于任何游戏中')}
-      else{        
+      else{
         if(array[0][0].checked && array[1][0].checked && array[1][1].checked){
           result += rule_foramt('自由地用于收费游戏中')
         }
@@ -158,7 +158,7 @@
           if(array[0][0].checked && !(array[1][0].checked && array[1][1].checked)){
             result += rule_foramt('自由地用于共享软件中（暂时无法确定规约详情）')
           }
-        }        
+        }
         if(array[0][2].checked){result += rule_foramt('自由地用于参加比赛的游戏中') }
         if(array[0][3].checked){result += rule_foramt('自由地用于特殊题材的游戏中') }
       }
@@ -179,45 +179,45 @@
       if(array[0].checked){result += rule_foramt('可以自由地二次配布') }
       if(array[1].checked){result += rule_foramt('加工后可发布') }
       if(array[2].checked){result += rule_foramt('禁止转载·二次配布') }
-      
+
       if (result == ""){
         result = "暂时没有发现作者给出明确的规约，请在遵守基本规则的前提下使用这份素材。<br>"
         result += "之后如果有确定的规约时会在这里进行更新。"
-      }      
+      }
       return result
     }
 
     function show_result(){
       var result_array = [0]
       result_array[0] = document.getElementById("name").value
-      result_array[1] = document.getElementById("host").value      
-      result_array[2] = url_format(document.getElementById("url").value)      
+      result_array[1] = document.getElementById("host").value
+      result_array[2] = url_format(document.getElementById("url").value)
       result_array[3] = get_list("language",["日语","英语","中文"],"other_lan")
-      result_array[4] = get_list("gfw",["有","无"])      
+      result_array[4] = get_list("gfw",["有","无"])
       result_array[5] = get_content_list()
       result_array[6] = url_format(document.getElementById("addr").value)
-      result_array[7] = url_format(document.getElementById("rule").value)      
+      result_array[7] = url_format(document.getElementById("rule").value)
       result_array[8] = get_rule_list()
-      result_array[9] = document.getElementById("up").value      
+      result_array[9] = document.getElementById("up").value
       result_array[10] = get_time()
       result_array[11] = document.getElementById("etc").value.replace(/\n/g,'</p><p>') + '</p>'
       document.getElementById("result").value = get_result(result_array)
-      
+
       p("预览结果<br><br>" + document.getElementById("result").value)
     }
   </script>
 </head>
 <body>
-  <!-- 最终结果 -->  
+  <!-- 最终结果 -->
   <div style="margin-left:500px;position:fixed;margin-top:20px">
     <button onclick="show_result()">输出结果</button><br><br>
-    <textarea id="result" 
-      style="height:100px;width:400px" 
+    <textarea id="result"
+      style="height:100px;width:400px"
       tabIndex="99"
       onclick="this.focus();this.select()"></textarea>
-    <div id="logger" style="background-color:lavender ;margin-top:8px; height:200px; 
+    <div id="logger" style="background-color:lavender ;margin-top:8px; height:200px;
                       width:400px; overflow-y:scroll">控制台</div>
-  </div>  
+  </div>
   <table border="0" style="margin-left:50px">
     <!-- 站点名称 -->
     <tr><td>站点名称</td><td style="width:20px"></td><td><input id="name" style="width:300px"/></td></tr>
@@ -230,7 +230,7 @@
       <input name="language" type="checkbox" />日语<br>
       <input name="language" type="checkbox" />英语<br>
       <input name="language" type="checkbox" />中文<br>
-      <input name="language" type="checkbox" 
+      <input name="language" type="checkbox"
         onclick='show_with_button("other_lan_area","other_lan_button",this.checked)'/>其他语言<br>
       <div id="other_lan_area" style="display:none">
         <input name="other_lan" style="margin-left:20px"/>
@@ -272,7 +272,7 @@
           <div id="other_aud_mat" style="display:none">
             <input name="other_aud" style="margin-left:20px"/><br>
           </div>
-          <div id="other_aud_button" style="display:none">            
+          <div id="other_aud_button" style="display:none">
             <button>+添加素材</button><br>
           </div>
         </div>
@@ -292,7 +292,7 @@
           </div>
         </div>
       <!-- 其他素材 -->
-      <input name="material" type="checkbox" 
+      <input name="material" type="checkbox"
         onclick='show_with_button("other_material","other_mat_button",this.checked)'/>其他素材<br>
         <div id="other_material" style="display:none">
           <input name="other_mat" style="margin-left:20px"/><br>
@@ -308,7 +308,7 @@
 
       <hr>一、与素材作者有关的相关规定<br><hr>
       不需要<br>
-        <input name="r1" type="checkbox" style="margin-left:20px" 
+        <input name="r1" type="checkbox" style="margin-left:20px"
           onclick='close_check("r1",3,this.checked)'/>署名</input><br>
         <input name="r1" type="checkbox" style="margin-left:20px"
           onclick='close_check("r1",4,this.checked)'/>下载报告</input><br>
@@ -338,16 +338,15 @@
           onclick='close_check("r6",2,this.checked)'/>特殊题材的游戏</input><br>
       不允许的游戏类型<br>
         <input name="r6" type="checkbox" style="margin-left:20px"
-          onclick='          
+          onclick='
           close_check("r4",0,this.checked);
           close_check("r4",1,this.checked);
-          if (this.checked){            
+          if (this.checked){
             show_area("com_game_area",false)
             document.getElementsByName("r5")[0].checked = false
             document.getElementsByName("r5")[1].checked = false
           }
-          '/>
-          以营利为目的游戏</input><br>
+          '/>以营利为目的的游戏</input><br>
         <input name="r6" type="checkbox" style="margin-left:20px"
           onclick='close_check("r5",1,this.checked)'/>商业游戏</input><br>
         <input name="r6" type="checkbox" style="margin-left:20px"
@@ -365,15 +364,15 @@
           '/>允许加工</input><br>
         <input name="r2" type="checkbox" disabled="true" style="margin-left:40px"/>不能破坏素材</input><br>
 
-      <hr>四、对于二次配布·转载的相关规定<br><hr>      
-        <input name="r3" type="radio" style="margin-left:20px">可以自由的二次配布</input><br>
+      <hr>四、对于二次配布·转载的相关规定<br><hr>
+        <input name="r3" type="radio" style="margin-left:20px">可以自由地二次配布</input><br>
         <input name="r3" type="radio" style="margin-left:20px">加工后可发布</input><br>
-        <input name="r3" type="radio" style="margin-left:20px">禁止转载·二次配布</input><br>        
+        <input name="r3" type="radio" style="margin-left:20px">禁止转载·二次配布</input><br>
     </td></tr>
     <!-- 翻译者 -->
     <tr><td>翻译者</td><td></td><td><input id="up" style="width:300px"/></td></tr>
     <!-- 备注 -->
-    <tr><td>备注</td><td></td><td><textarea id="etc" style="width:300px;height:150px"></textarea></td></tr>    
-  </table>  
+    <tr><td>备注</td><td></td><td><textarea id="etc" style="width:300px;height:150px"></textarea></td></tr>
+  </table>
 </body>
 </html>
