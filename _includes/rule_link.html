@@ -1,0 +1,25 @@
+
+{% comment %}
+
+  {% include rule_link.html rule="规约名称" %}
+    建立一个指向规约的链接。如果规约设有 img 属性，则建立图片链接，否则为文字链接。
+
+  {% include rule_link.html rule="规约名称" text=true %}
+    建立一个指向规约的文字链接。
+
+{% endcomment %}
+
+{% assign rules = site.rules | where:"name", include.rule %}
+{% assign rule = rules.first %}
+
+{% if rule.local %}
+  {% assign url = {{ site.baseurl }}/rules/{{ rule.name }}.html %}
+{% else %}
+  {% assign url = {{ rule.url }} %}
+{% endif %}
+
+{% if rule.img and include.text != true %}
+  <a href="{{ url }}" target="_blank"><img src="{{ site.baseurl }}/images/{{ rule.img }}" alt="{{ rule.name }}"></a>
+{% else %}
+  <a href="{{ url }}" target="_blank">{{ rule.name }}</a>
+{% endif %}

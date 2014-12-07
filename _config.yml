@@ -4,7 +4,7 @@ title: RPG制作大师授权素材推广计划
 # email: your-email@domain.com
 description: > # this means to ignore newlines until "baseurl:"
   RPG Maker free material website share project.
-baseurl: "/rmproject/" # the subpath of your site, e.g. /blog/
+baseurl: "/rmproject" # the subpath of your site, e.g. /blog/
 url: "http://miaowm5.github.io" # the base hostname & protocol for your site
 
 # Build settings
@@ -22,95 +22,149 @@ defaults:
       path: ""
     values:
       layout: default
+  -
+    scope:
+      path: rules
+    values:
+      layout: rule
+
+rule_types:
+  basic: 基本规则
+  author: 与素材作者有关的规定
+  game_type: 对于游戏类型的相关规定
+  game_making: 对于游戏制作的相关规定
+  republish: 对于二次配布·转载的相关规定
 
 rules:
+  # local: 规约一览是否指向本网站的链接
   -
     name: 基本规则
-    rules:
-      -
-        name: 基本规则
-        url: "http://rmtemp.lofter.com/post/3e26fe_156e50a"
+    url: http://rmtemp.lofter.com/post/3e26fe_156e50a
+    img: basic_rules.jpg
+    type: basic
+    # local: true
+
   -
-    name: 与素材作者有关的相关规定
-    rules:
-      -
-        name: 需要署名
-        url: "http://rmtemp.lofter.com/post/3e26fe_156e50f"
-      -
-        name: 不需要署名
-        url: "http://rmtemp.lofter.com/post/3e26fe_156e513"
-      -
-        name: 不需要下载报告
-        url: "http://rmtemp.lofter.com/post/3e26fe_40beac5"
-      -
-        name: 不需要使用报告
-        url: "http://rmtemp.lofter.com/post/3e26fe_40beacb"
-      -
-        name: 不需要报告
-        url: "http://rmtemp.lofter.com/post/3e26fe_156f16f"
-      -
-        name: 需要下载报告
-        url: "http://rmtemp.lofter.com/post/3e26fe_156e526"
-      -
-        name: 需要使用报告
-        url: "http://rmtemp.lofter.com/post/3e26fe_156e52c"
+    name: 需要署名
+    url: http://rmtemp.lofter.com/post/3e26fe_156e50f
+    type: author
   -
-    name: 对于游戏类型的相关规定
-    rules:
-      -
-        name: 自由地用于收费游戏中（同人游戏）
-        url: "http://rmtemp.lofter.com/post/3e26fe_156e531"
-      -
-        name: 自由地用于收费游戏中（商业游戏）
-        url: "http://rmtemp.lofter.com/post/3e26fe_156f10d"
-      -
-        name: 自由地用于收费游戏中（游戏类型未说明）
-        url: "http://rmtemp.lofter.com/post/3e26fe_167cd74"
-      -
-        name: 自由地用于共享软件中（暂时无法确定规约详情）
-        url: "http://rmtemp.lofter.com/post/3e26fe_1755db2"
-      -
-        name: 自由地用于收费游戏中
-        url: "http://rmtemp.lofter.com/post/3e26fe_16780a8"
-      -
-        name: 自由地用于参加比赛的游戏中
-        url: "http://rmtemp.lofter.com/post/3e26fe_1678067"
-      -
-        name: 自由地用于特殊题材的游戏中
-        url: "http://rmtemp.lofter.com/post/3e26fe_1677fd6"
-      -
-        name: 自由地用于任何游戏中
-        url: "http://rmtemp.lofter.com/post/3e26fe_156f11b"
-      -
-        name: 禁止用于以营利为目的的游戏中
-        url: "http://rmtemp.lofter.com/post/3e26fe_160288a"
-      -
-        name: 禁止用于题材不适当的游戏中
-        url: "http://rmtemp.lofter.com/post/3e26fe_160285e"
-      -
-        name: 禁止用于商业游戏中
-        url: "http://rmtemp.lofter.com/post/3e26fe_16018a5"
+    name: 不需要署名
+    url: http://rmtemp.lofter.com/post/3e26fe_156e513
+    type: author
   -
-    name: 对于游戏制作的相关规定
-    rules:
-      -
-        name: 允许加工
-        url: "http://rmtemp.lofter.com/post/3e26fe_156f131"
-      -
-        name: 允许在不破坏素材的情况下进行加工
-        url: "http://rmtemp.lofter.com/post/3e26fe_156f136"
-      -
-        name: 限制使用素材的软件
-        url: "http://rmtemp.lofter.com/post/3e26fe_156f12d"
+    name: 不需要下载报告
+    url: http://rmtemp.lofter.com/post/3e26fe_40beac5
+    type: author
   -
-    name: 对于二次配布·转载的相关规定
-    rules:
-      -
-        name: 可以自由地二次配布
-        url: "http://rmtemp.lofter.com/post/3e26fe_156f1c7"
-      -
-        name: 加工后可发布
-        url: "http://rmtemp.lofter.com/post/3e26fe_156f1ae"
-      -
-        name: 禁止转载·二次配布
-        url: "http://rmtemp.lofter.com/post/3e26fe_167cd92"
+    name: 不需要使用报告
+    url: http://rmtemp.lofter.com/post/3e26fe_40beacb
+    type: author
+  -
+    name: 不需要报告
+    url: http://rmtemp.lofter.com/post/3e26fe_156f16f
+    type: author
+  -
+    name: 需要下载报告
+    url: http://rmtemp.lofter.com/post/3e26fe_156e526
+    type: author
+  -
+    name: 需要使用报告
+    url: http://rmtemp.lofter.com/post/3e26fe_156e52c
+    type: author
+
+  -
+    name: 自由地用于收费游戏中（同人游戏）
+    url: http://rmtemp.lofter.com/post/3e26fe_156e531
+    type: game_type
+  -
+    name: 自由地用于收费游戏中（商业游戏）
+    url: http://rmtemp.lofter.com/post/3e26fe_156f10d
+    type: game_type
+  -
+    name: 自由地用于收费游戏中（游戏类型未说明）
+    url: http://rmtemp.lofter.com/post/3e26fe_167cd74
+    type: game_type
+  -
+    name: 自由地用于共享软件中（暂时无法确定规约详情）
+    url: http://rmtemp.lofter.com/post/3e26fe_1755db2
+    type: game_type
+  -
+    name: 自由地用于收费游戏中
+    url: http://rmtemp.lofter.com/post/3e26fe_16780a8
+    type: game_type
+  -
+    name: 自由地用于参加比赛的游戏中
+    url: http://rmtemp.lofter.com/post/3e26fe_1678067
+    type: game_type
+  -
+    name: 自由地用于特殊题材的游戏中
+    url: http://rmtemp.lofter.com/post/3e26fe_1677fd6
+    type: game_type
+  -
+    name: 自由地用于任何游戏中
+    url: http://rmtemp.lofter.com/post/3e26fe_156f11b
+    type: game_type
+  -
+    name: 禁止用于以营利为目的的游戏中
+    url: http://rmtemp.lofter.com/post/3e26fe_160288a
+    type: game_type
+  -
+    name: 禁止用于题材不适当的游戏中
+    url: http://rmtemp.lofter.com/post/3e26fe_160285e
+    type: game_type
+  -
+    name: 禁止用于商业游戏中
+    url: http://rmtemp.lofter.com/post/3e26fe_16018a5
+    type: game_type
+
+  -
+    name: 允许加工
+    url: http://rmtemp.lofter.com/post/3e26fe_156f131
+    type: game_making
+  -
+    name: 允许在不破坏素材的情况下进行加工
+    url: http://rmtemp.lofter.com/post/3e26fe_156f136
+    type: game_making
+  -
+    name: 限制使用素材的软件
+    url: http://rmtemp.lofter.com/post/3e26fe_156f12d
+    type: game_making
+
+  -
+    name: 可以自由地二次配布
+    url: http://rmtemp.lofter.com/post/3e26fe_156f1c7
+    type: republish
+  -
+    name: 加工后可发布
+    url: http://rmtemp.lofter.com/post/3e26fe_156f1ae
+    type: republish
+  -
+    name: 禁止转载·二次配布
+    url: http://rmtemp.lofter.com/post/3e26fe_167cd92
+    type: republish
+
+  -
+    name: 允许免费使用
+    url: http://rmtemp.lofter.com/post/3e26fe_1a18a7e
+    img: for_free.jpg
+  -
+    name: 没有放弃著作权
+    url: http://rmtemp.lofter.com/post/3e26fe_1a1a644
+    img: copyright_reserved.jpg
+  -
+    name: 禁止外链
+    url: http://rmtemp.lofter.com/post/3e26fe_1a1a650
+    img: no_direct_link.jpg
+  -
+    name: 禁止用在问题游戏中
+    url: http://rmtemp.lofter.com/post/3e26fe_1a1a655
+    img: no_problem_game.jpg
+  -
+    name: 使用责任、规约补充
+    url: http://rmtemp.lofter.com/post/3e26fe_1a1a666
+    img: additional.jpg
+  -
+    name: 仅针对游戏制作
+    url: http://rmtemp.lofter.com/post/3e26fe_1a1a66e
+    img: game_only.jpg

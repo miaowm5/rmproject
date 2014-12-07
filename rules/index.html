@@ -1,0 +1,18 @@
+---
+title: 利用规约一览
+layout: default
+---
+
+{% for type in site.rule_types %}
+  {% assign rules = site.rules | where:"type", type[0] %}
+  <h3>{{ type[1] }}</h3>
+  <ul>
+    {% for rule in rules %}
+      <li>{% include rule_link.html rule=rule.name text=true %}</li>
+    {% endfor %}
+  </ul>
+{% endfor %}
+
+<p>
+  <img src="{{ site.baseurl }}/images/excerpt.png">
+</p>
