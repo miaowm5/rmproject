@@ -92,10 +92,8 @@
   function rule_foramt(rule){
     var result = ""
     var list = {
-      {% for type in site.rules %}
-        {% for rule in type.rules %}
-          '{{ rule.name }}' : '{{ rule.url }}',
-        {% endfor %}
+      {% for rule in site.rules %}
+        '{{ rule.name }}' : '{{ rule.url }}',
       {% endfor %}
 
       '防止末尾的多余逗号' : undefined

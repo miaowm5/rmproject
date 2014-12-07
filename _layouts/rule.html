@@ -1,0 +1,39 @@
+---
+layout: default
+---
+
+{% assign rules = site.rules | where:"name", page.title %}
+{% assign rule = rules.first %}
+
+{% include rule_link.html rule=page.title %}
+
+{{ content }}
+
+<p>
+  <a href="{{ site.baseurl }}/rules/" target="_blank">◆利用规约一览◆</a>
+</p>
+<p>
+  <img src="{{ site.baseurl }}/images/excerpt.png">
+</p>
+<p>
+  喜欢这种形式的规约吗？为什么不试着将它们用到你自己的原创素材中呢？<br>
+  本规约文字地址：
+</p>
+<blockquote>
+  <p>
+    <a href="{{ rule.url }}" target="_blank">{{ page.title }}</a><br>
+    <a href="{{ rule.url }}" target="_blank">{{ rule.url }}</a>
+  </p>
+</blockquote>
+
+{% if rule.img %}
+<p>
+  本规约图片代码：<br>
+  HTML
+</p>
+<blockquote>
+  <p>
+    &lt;a href=&quot;{{ rule.url }}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{ site.url }}{{ site.baseurl }}/images/{{ rule.img }}&quot;&gt;&lt;/a&gt;
+  </p>
+</blockquote>
+{% endif %}

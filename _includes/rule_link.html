@@ -1,0 +1,15 @@
+
+{% assign rules = site.rules | where:"name", include.rule %}
+{% assign rule = rules.first %}
+
+{% if rule.local %}
+  {% assign url = {{ site.baseurl }}/rules/{{ rule.name }}.html %}
+{% else %}
+  {% assign url = {{ rule.url }} %}
+{% endif %}
+
+{% if rule.img %}
+  <a href="{{ url }}" target="_blank"><img src="{{ site.baseurl }}/images/{{ rule.img }}" alt="{{ rule.name }}"></a>
+{% else %}
+  <a href="{{ url }}" target="_blank">{{ rule.name }}></a>
+{% endif %}

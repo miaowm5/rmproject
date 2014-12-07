@@ -1,5 +1,6 @@
 ---
-
 ---
 
-纯白的世界，之后再慢慢编辑……
+{% for post in site.posts %}
+  <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
+{% endfor %}
