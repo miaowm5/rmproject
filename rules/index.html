@@ -8,11 +8,7 @@ layout: default
   <h3>{{ type[1] }}</h3>
   <ul>
     {% for rule in rules %}
-      {% if rule.local %}
-        <li><a href="{{ site.baseurl }}/rules/{{ rule.name }}.html">{{ rule.name }}</a></li>
-      {% else %}
-        <li><a href="{{ rule.url }}">{{ rule.name }}</a></li>
-      {% endif %}
+      <li>{% include rule_link.html rule=rule.name text=true %}</li>
     {% endfor %}
   </ul>
 {% endfor %}
