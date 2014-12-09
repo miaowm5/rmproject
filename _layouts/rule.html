@@ -5,7 +5,7 @@ layout: default
 {% assign rules = site.rules | where:"name", page.title %}
 {% assign rule = rules.first %}
 
-{% include rule_link.html rule=page.title %}
+{% include rule_link.html rule=rule %}
 
 {{ content }}
 

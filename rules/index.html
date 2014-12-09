@@ -8,7 +8,7 @@ layout: default
   <h3>{{ type[1] }}</h3>
   <ul>
     {% for rule in rules %}
-      <li>{% include rule_link.html rule=rule.name text=true %}</li>
+      <li>{% include rule_link.html rule=rule text=true %}</li>
     {% endfor %}
   </ul>
 {% endfor %}

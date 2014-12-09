@@ -2,6 +2,7 @@
 {% comment %}
 
   {% include rule_link.html rule="规约名称" %}
+  {% include rule_link.html rule=rule %}
     建立一个指向规约的链接。如果规约设有 img 属性，则建立图片链接，否则为文字链接。
 
   {% include rule_link.html rule="规约名称" text=true %}
@@ -9,8 +10,12 @@
 
 {% endcomment %}
 
-{% assign rules = site.rules | where:"name", include.rule %}
-{% assign rule = rules.first %}
+{% if include.rule.name %}
+  {% assign rule = include.rule %}
+{% else %}
+  {% assign rules = site.rules | where:"name", include.rule %}
+  {% assign rule = rules.first %}
+{% endif %}
 
 {% if rule.local %}
   {% capture url %}{{ site.baseurl }}/rules/{{ rule.name }}.html{% endcapture %}
