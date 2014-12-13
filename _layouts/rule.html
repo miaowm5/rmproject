@@ -9,31 +9,26 @@ layout: default
 
 {{ content }}
 
-<p>
+<h4>
   <a href="{{ site.baseurl }}/rules/" target="_blank">◆利用规约一览◆</a>
-</p>
-<p>
-  <img src="{{ site.baseurl }}/images/excerpt.png">
-</p>
+</h4>
+
+<img src="{{ site.baseurl }}/images/excerpt.png">
 <p>
   喜欢这种形式的规约吗？为什么不试着将它们用到你自己的原创素材中呢？<br>
   本规约文字地址：
 </p>
 <blockquote>
-  <p>
-    <a href="{{ rule.url }}" target="_blank">{{ page.title }}</a><br>
-    <a href="{{ rule.url }}" target="_blank">{{ rule.url }}</a>
-  </p>
+  <a href="{{ rule.url }}" target="_blank">{{ page.title }}</a><br>
+  <a href="{{ rule.url }}" target="_blank">{{ rule.url }}</a>
 </blockquote>
 
 {% if rule.img %}
-<p>
-  本规约图片代码：<br>
-  HTML
-</p>
-<blockquote>
-  <p>
-    &lt;a href=&quot;{{ rule.url }}&quot; target=&quot;_blank&quot;&gt;&lt;img src=&quot;{{ site.url }}{{ site.baseurl }}/images/{{ rule.img }}&quot;&gt;&lt;/a&gt;
-  </p>
-</blockquote>
+
+本规约图片代码：<br>
+HTML
+{% highlight html %}
+  <a href="{{ rule.url }}" target="_blank"><img src="{{ site.url }}{{ site.baseurl }}/images/{{ rule.img }}"></a>
+{% endhighlight %}
+
 {% endif %}
