@@ -2,8 +2,9 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <script>
-    function site_list(index){
+    function search_url(){
       var list = [
+
         /.*etolier.*/,"http://rmproject.lofter.com/post/3b5924_17daf8a",
         /.*mintk.blog79.fc2.*/,"http://rmproject.lofter.com/post/3b5924_151eca0",
         /.*momope8.blog67.fc2.*/,"http://rmproject.lofter.com/post/3b5924_154d4a0",
@@ -33,16 +34,9 @@
         /.*正则表达式.*/,"目标网址",
 
       ]
-      return list[index]
-    }
-    function search_url(){
       var url = window.location.hash
-      for (var i = 0; i < site_list.length; i += 2) {
-        if(site_list(i).test(window.location.hash)){
-          alert(site_list(i+1))
-          window.location = site_list(i+1)
-          return
-        }
+      for (var i = 0; i < list.length; i += 2) {
+        if(list[i].test(window.location.hash)){ window.location = list[i+1]; return }
       }
       document.getElementById('error').innerHTML = "目前我们没有这个网站的数据"
     }
