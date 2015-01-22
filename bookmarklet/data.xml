@@ -262,11 +262,11 @@
   <project_url>249f49f</project_url>
 </site>
 <site id="65">
-  <url_regexp>/.*sites.google.*wbinfomation/.*/</url_regexp>
+  <url_regexp>/.*sites.google.*wbinfomation.*/</url_regexp>
   <project_url>1a452d3</project_url>
 </site>
 <site id="66">
-  <url_regexp>/.*geocities.*Milano-Cat.3319/.*/</url_regexp>
+  <url_regexp>/.*geocities.*Milano-Cat.3319.*/</url_regexp>
   <project_url>1a43e08</project_url>
 </site>
 <site id="67">
@@ -362,7 +362,7 @@
   <project_url>17eabb7</project_url>
 </site>
 <site id="90">
-  <url_regexp>/.*2ram.*/</url_regexp>
+  <url_regexp>/.*2ram.com.*/</url_regexp>
   <project_url>17eab8d</project_url>
 </site>
 <site id="91">
