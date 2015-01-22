@@ -2,48 +2,40 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
   <script>
+    function write_hint(text){
+      document.getElementById('hint').innerHTML = text
+    }
     function search_url(){
-      var list = [
-
-        /.*etolier.*/,"http://rmproject.lofter.com/post/3b5924_17daf8a",
-        /.*mintk.blog79.fc2.*/,"http://rmproject.lofter.com/post/3b5924_151eca0",
-        /.*momope8.blog67.fc2.*/,"http://rmproject.lofter.com/post/3b5924_154d4a0",
-        /.*sorejanai.blog.shinobi.jp.*/,"http://rmproject.lofter.com/post/3b5924_166bcbe",
-        /.*downloadpackage.oteage.*/,"http://rmproject.lofter.com/post/3b5924_166bc71",
-        /.*nyancha.sakura.*/,"http://rmproject.lofter.com/post/3b5924_1613a4d",
-        /.*pf-x.net.~lizzy.*/,"http://rmproject.lofter.com/post/3b5924_154d4c1",
-        /.*eurs.blog65.fc2.*/,"http://rmproject.lofter.com/post/3b5924_151ecec",
-        /.*cocodoco.*/,"http://rmproject.lofter.com/post/3b5924_14be3cb",
-        /.*makapri.web.fc2.*/,"http://rmproject.lofter.com/post/3b5924_143e6be",
-        /.*lemon-slice.*/,"http://rmproject.lofter.com/post/3b5924_13cbb0d",
-        /.*usui.moo.*/,"http://rmproject.lofter.com/post/3b5924_1390068",
-        /.*sundriveplus.blog54.fc2.*/,"http://rmproject.lofter.com/post/3b5924_1853a0a",
-        /.*vitamindog.blog68.fc2.*/,"http://rmproject.lofter.com/post/3b5924_18539d1",
-        /.*tkool.rgr.*/,"http://rmproject.lofter.com/post/3b5924_18769a0",
-        /.*divisionheaven.*/,"http://rmproject.lofter.com/post/3b5924_1900ecd",
-        /.*garandou.youbundo.*/,"http://rmproject.lofter.com/post/3b5924_1959a02",
-        /.*maiyazu.web.fc2.*/,"http://rmproject.lofter.com/post/3b5924_248d324",
-        /.*geocities.jp.chierin4649.*/,"http://rmproject.lofter.com/post/3b5924_255c37d",
-        /.*pixiv.*4920496.*/,"http://rmproject.lofter.com/post/3b5924_2766ecd",
-        /.*towaemoa.blog70.fc2.*/,"http://rmproject.lofter.com/post/3b5924_368f7cc",
-        /.*soramani.kagome-kagome.*/,"http://rmproject.lofter.com/post/3b5924_3edcca8",
-        /.*ameblo.*nomicom.*/,"http://rmproject.lofter.com/post/3b5924_40cc0d5",
-        /.*jewel-s.*/,"http://rmproject.lofter.com/post/3b5924_4ef8227",
-        /.*reifucircleofnine.amsstudio.*/,"http://rmproject.lofter.com/post/3b5924_5078f6b",
-
-        /.*正则表达式.*/,"目标网址",
-
-      ]
-      var url = window.location.hash
-      for (var i = 0; i < list.length; i += 2) {
-        if(list[i].test(window.location.hash)){ window.location = list[i+1]; return }
+      var xmlhttp = null;
+      if (window.XMLHttpRequest){ xmlhttp=new XMLHttpRequest(); }
+      else if (window.ActiveXObject){ xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"); }
+      if (xmlhttp == null){
+        write_hint("您的土鳖浏览器居然连XML都不支持……")
+        return
       }
-      document.getElementById('error').innerHTML = "目前我们没有这个网站的数据"
+      xmlhttp.open("GET","data.xml",false);
+      xmlhttp.send(null);
+      var list = xmlhttp.responseXML.documentElement.getElementsByTagName('site')
+      var data
+      for (var i = 0; i < list.length; i += 1) {
+        data = list[i].getElementsByTagName('url_regexp')[0]
+        data = data.textContent || data.text
+        if(eval(data).test(window.location.hash)){
+          data = list[i].getElementsByTagName("project_url")[0]
+          data = data.textContent || data.text
+          window.location = "http://rmproject.lofter.com/post/3b5924_" + data
+          return
+        }
+      }
+      write_hint("目前我们没有这个网站的数据TvT")
     }
   </script>
 </head>
 <body>
-  <h1 style="text-align:center;width:100%;" id='error'>努力查找数据中...</h1>
+  <h1 style="text-align:center;width:100%;" id='hint'>
+    努力查找数据中...</br>
+    若长时间停留在这个页面请刷新重试
+  </h1>
   <script >
     search_url()
   </script>

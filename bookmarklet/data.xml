@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<data>
+
+<site id="0">
+  <url_regexp>/.*etolier.*/</url_regexp>
+  <project_url>17daf8a</project_url>
+</site>
+<site id="1">
+  <url_regexp>/.*mintk.blog79.fc2.*/</url_regexp>
+  <project_url>151eca0</project_url>
+</site>
+<site id="2">
+  <url_regexp>/.*momope8.blog67.fc2.*/</url_regexp>
+  <project_url>154d4a0</project_url>
+</site>
+<site id="3">
+  <url_regexp>/.*sorejanai.blog.shinobi.jp.*/</url_regexp>
+  <project_url>166bcbe</project_url>
+</site>
+<site id="4">
+  <url_regexp>/.*downloadpackage.oteage.*/</url_regexp>
+  <project_url>166bc71</project_url>
+</site>
+<site id="5">
+  <url_regexp>/.*nyancha.sakura.*/</url_regexp>
+  <project_url>1613a4d</project_url>
+</site>
+<site id="6">
+  <url_regexp>/.*pf-x.net.~lizzy.*/</url_regexp>
+  <project_url>154d4c1</project_url>
+</site>
+<site id="7">
+  <url_regexp>/.*eurs.blog65.fc2.*/</url_regexp>
+  <project_url>151ecec</project_url>
+</site>
+<site id="8">
+  <url_regexp>/.*cocodoco.*/</url_regexp>
+  <project_url>14be3cb</project_url>
+</site>
+<site id="9">
+  <url_regexp>/.*makapri.web.fc2.*/</url_regexp>
+  <project_url>143e6be</project_url>
+</site>
+<site id="10">
+  <url_regexp>/.*lemon-slice.*/</url_regexp>
+  <project_url>13cbb0d</project_url>
+</site>
+<site id="11">
+  <url_regexp>/.*usui.moo.*/</url_regexp>
+  <project_url>1390068</project_url>
+</site>
+<site id="12">
+  <url_regexp>/.*sundriveplus.blog54.fc2.*/</url_regexp>
+  <project_url>1853a0a</project_url>
+</site>
+<site id="13">
+  <url_regexp>/.*vitamindog.blog68.fc2.*/</url_regexp>
+  <project_url>18539d1</project_url>
+</site>
+<site id="14">
+  <url_regexp>/.*divisionheaven.*/</url_regexp>
+  <project_url>1900ecd</project_url>
+</site>
+<site id="15">
+  <url_regexp>/.*tkool.rgr.*/</url_regexp>
+  <project_url>18769a0</project_url>
+</site>
+<site id="16">
+  <url_regexp>/.*garandou.youbundo.*/</url_regexp>
+  <project_url>1959a02</project_url>
+</site>
+<site id="17">
+  <url_regexp>/.*maiyazu.web.fc2.*/</url_regexp>
+  <project_url>248d324</project_url>
+</site>
+<site id="18">
+  <url_regexp>/.*geocities.jp.chierin4649.*/</url_regexp>
+  <project_url>255c37d</project_url>
+</site>
+<site id="19">
+  <url_regexp>/.*pixiv.*4920496.*/</url_regexp>
+  <project_url>2766ecd</project_url>
+</site>
+<site id="20">
+  <url_regexp>/.*towaemoa.blog70.fc2.*/</url_regexp>
+  <project_url>368f7cc</project_url>
+</site>
+<site id="21">
+  <url_regexp>/.*soramani.kagome-kagome.*/</url_regexp>
+  <project_url>3edcca8</project_url>
+</site>
+<site id="22">
+  <url_regexp>/.*ameblo.*nomicom.*/</url_regexp>
+  <project_url>40cc0d5</project_url>
+</site>
+<site id="23">
+  <url_regexp>/.*jewel-s.*/</url_regexp>
+  <project_url>4ef8227</project_url>
+</site>
+<site id="24">
+  <url_regexp>/.*reifucircleofnine.amsstudio.*/</url_regexp>
+  <project_url>5078f6b</project_url>
+</site>
+
+</data>
