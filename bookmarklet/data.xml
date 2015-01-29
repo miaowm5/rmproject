@@ -6,11 +6,11 @@
   <project_url>17daf8a</project_url>
 </site>
 <site id="1">
-  <url_regexp>/.*mintk.blog79.fc2.*/</url_regexp>
+  <url_regexp>/.*mintk.*fc2.*/</url_regexp>
   <project_url>151eca0</project_url>
 </site>
 <site id="2">
-  <url_regexp>/.*momope8.blog67.fc2.*/</url_regexp>
+  <url_regexp>/.*momope8.*fc2.*/</url_regexp>
   <project_url>154d4a0</project_url>
 </site>
 <site id="3">
@@ -30,7 +30,7 @@
   <project_url>154d4c1</project_url>
 </site>
 <site id="7">
-  <url_regexp>/.*eurs.blog65.fc2.*/</url_regexp>
+  <url_regexp>/.*eurs.*fc2.*/</url_regexp>
   <project_url>151ecec</project_url>
 </site>
 <site id="8">
@@ -38,7 +38,7 @@
   <project_url>14be3cb</project_url>
 </site>
 <site id="9">
-  <url_regexp>/.*makapri.web.fc2.*/</url_regexp>
+  <url_regexp>/.*makapri.*fc2.*/</url_regexp>
   <project_url>143e6be</project_url>
 </site>
 <site id="10">
@@ -50,11 +50,11 @@
   <project_url>1390068</project_url>
 </site>
 <site id="12">
-  <url_regexp>/.*sundriveplus.blog54.fc2.*/</url_regexp>
+  <url_regexp>/.*sundriveplus.*fc2.*/</url_regexp>
   <project_url>1853a0a</project_url>
 </site>
 <site id="13">
-  <url_regexp>/.*vitamindog.blog68.fc2.*/</url_regexp>
+  <url_regexp>/.*vitamindog.*fc2.*/</url_regexp>
   <project_url>18539d1</project_url>
 </site>
 <site id="14">
@@ -70,7 +70,7 @@
   <project_url>1959a02</project_url>
 </site>
 <site id="17">
-  <url_regexp>/.*maiyazu.web.fc2.*/</url_regexp>
+  <url_regexp>/.*maiyazu.*fc2.*/</url_regexp>
   <project_url>248d324</project_url>
 </site>
 <site id="18">
@@ -82,7 +82,7 @@
   <project_url>2766ecd</project_url>
 </site>
 <site id="20">
-  <url_regexp>/.*towaemoa.blog70.fc2.*/</url_regexp>
+  <url_regexp>/.*towaemoa.*fc2.*/</url_regexp>
   <project_url>368f7cc</project_url>
 </site>
 <site id="21">
@@ -114,11 +114,11 @@
   <project_url>151ec3b</project_url>
 </site>
 <site id="28">
-  <url_regexp>/.*masutyima0.blog.fc2.*/</url_regexp>
+  <url_regexp>/.*masutyima0.*fc2.*/</url_regexp>
   <project_url>166bc01</project_url>
 </site>
 <site id="29">
-  <url_regexp>/.*cport.web.fc2.*/</url_regexp>
+  <url_regexp>/.*cport.*fc2.*/</url_regexp>
   <project_url>166a854</project_url>
 </site>
 <site id="30">
@@ -126,7 +126,7 @@
   <project_url>166a7d8</project_url>
 </site>
 <site id="31">
-  <url_regexp>/.*kaikai23.blog100.fc2.*/</url_regexp>
+  <url_regexp>/.*kaikai23.*fc2.*/</url_regexp>
   <project_url>1592e23</project_url>
 </site>
 <site id="32">
@@ -150,11 +150,11 @@
   <project_url>1877747</project_url>
 </site>
 <site id="37">
-  <url_regexp>/.*kb147.web.fc2.*/</url_regexp>
+  <url_regexp>/.*kb147.*fc2.*/</url_regexp>
   <project_url>1a451da</project_url>
 </site>
 <site id="38">
-  <url_regexp>/.*revdot.web.fc2.*/</url_regexp>
+  <url_regexp>/.*revdot.*fc2.*/</url_regexp>
   <project_url>3ce871f</project_url>
 </site>
 <site id="39">
@@ -174,7 +174,7 @@
   <project_url>5486937</project_url>
 </site>
 <site id="43">
-  <url_regexp>/.*firstodyssey.blog.fc2.*/</url_regexp>
+  <url_regexp>/.*firstodyssey.*fc2.*/</url_regexp>
   <project_url>4fdd3d8</project_url>
 </site>
 <site id="44">
@@ -182,7 +182,7 @@
   <project_url>4f3e161</project_url>
 </site>
 <site id="45">
-  <url_regexp>/.*harumakikukan.web.fc2.*/</url_regexp>
+  <url_regexp>/.*harumakikukan.*fc2.*/</url_regexp>
   <project_url>437e5b2</project_url>
 </site>
 <site id="46">
@@ -202,7 +202,7 @@
   <project_url>437c9c9</project_url>
 </site>
 <site id="50">
-  <url_regexp>/.*supponweblog.blog88.fc2.*/</url_regexp>
+  <url_regexp>/.*supponweblog.*fc2.*/</url_regexp>
   <project_url>4027c2a</project_url>
 </site>
 <site id="51">
@@ -218,7 +218,7 @@
   <project_url>2d4a09c</project_url>
 </site>
 <site id="54">
-  <url_regexp>/.*blueforestar.blog.fc2.*/</url_regexp>
+  <url_regexp>/.*blueforestar.*fc2.*/</url_regexp>
   <project_url>2af29e9</project_url>
 </site>
 <site id="55">
@@ -230,7 +230,7 @@
   <project_url>2883f9a</project_url>
 </site>
 <site id="57">
-  <url_regexp>/.*tsukishinshi.blog73.fc2.*/</url_regexp>
+  <url_regexp>/.*tsukishinshi.*fc2.*/</url_regexp>
   <project_url>2825844</project_url>
 </site>
 <site id="58">
@@ -258,7 +258,7 @@
   <project_url>24a0778</project_url>
 </site>
 <site id="64">
-  <url_regexp>/.*tamurarpgvx.blog137.fc2.*/</url_regexp>
+  <url_regexp>/.*tamurarpgvx.*fc2.*/</url_regexp>
   <project_url>249f49f</project_url>
 </site>
 <site id="65">
@@ -282,7 +282,7 @@
   <project_url>19599e8</project_url>
 </site>
 <site id="70">
-  <url_regexp>/.*gaemnohakoniwa.blog9.fc2.*/</url_regexp>
+  <url_regexp>/.*gaemnohakoniwa.*fc2.*/</url_regexp>
   <project_url>19438af</project_url>
 </site>
 <site id="71">
@@ -294,7 +294,7 @@
   <project_url>18ffd9d</project_url>
 </site>
 <site id="73">
-  <url_regexp>/.*izumiwhite.web.fc2.*/</url_regexp>
+  <url_regexp>/.*izumiwhite.*fc2.*/</url_regexp>
   <project_url>1941c75</project_url>
 </site>
 <site id="74">
@@ -318,7 +318,7 @@
   <project_url>18769ea</project_url>
 </site>
 <site id="79">
-  <url_regexp>/.*soleilmusique.web.fc2.*/</url_regexp>
+  <url_regexp>/.*soleilmusique.*fc2.*/</url_regexp>
   <project_url>185e0c5</project_url>
 </site>
 <site id="80">
@@ -342,11 +342,11 @@
   <project_url>1853963</project_url>
 </site>
 <site id="85">
-  <url_regexp>/.*artificialprovidence.web.fc2.*/</url_regexp>
+  <url_regexp>/.*artificialprovidence.*fc2.*/</url_regexp>
   <project_url>185393a</project_url>
 </site>
 <site id="86">
-  <url_regexp>/.*ccwinter.blog.fc2.*/</url_regexp>
+  <url_regexp>/.*ccwinter.*fc2.*/</url_regexp>
   <project_url>17ec458</project_url>
 </site>
 <site id="87">
@@ -406,7 +406,7 @@
   <project_url>166d12c</project_url>
 </site>
 <site id="101">
-  <url_regexp>/.*stonelane.blog130.fc2.*/</url_regexp>
+  <url_regexp>/.*stonelane.*fc2.*/</url_regexp>
   <project_url>166bd05</project_url>
 </site>
 <site id="102">
@@ -418,7 +418,7 @@
   <project_url>166a709</project_url>
 </site>
 <site id="104">
-  <url_regexp>/.*cyanyurikago.web.fc2.*/</url_regexp>
+  <url_regexp>/.*cyanyurikago.*fc2.*/</url_regexp>
   <project_url>166a6ab</project_url>
 </site>
 <site id="105">
@@ -430,7 +430,7 @@
   <project_url>15d206b</project_url>
 </site>
 <site id="107">
-  <url_regexp>/.*woodpenguin.blog.fc2.*/</url_regexp>
+  <url_regexp>/.*woodpenguin.*fc2.*/</url_regexp>
   <project_url>1592e04</project_url>
 </site>
 <site id="108">
@@ -438,7 +438,7 @@
   <project_url>15898c1</project_url>
 </site>
 <site id="109">
-  <url_regexp>/.*konoee.blog137.fc2.*/</url_regexp>
+  <url_regexp>/.*konoee.*fc2.*/</url_regexp>
   <project_url>166bce7</project_url>
 </site>
 <site id="110">
@@ -446,7 +446,7 @@
   <project_url>1589876</project_url>
 </site>
 <site id="111">
-  <url_regexp>/.*a1tktk.web.fc2.*/</url_regexp>
+  <url_regexp>/.*a1tktk.*fc2.*/</url_regexp>
   <project_url>1581ce4</project_url>
 </site>
 <site id="112">
@@ -454,7 +454,7 @@
   <project_url>154d471</project_url>
 </site>
 <site id="113">
-  <url_regexp>/.*canarialt.blog.fc2.*/</url_regexp>
+  <url_regexp>/.*canarialt.*fc2.*/</url_regexp>
   <project_url>154d43a</project_url>
 </site>
 <site id="114">
@@ -549,11 +549,42 @@
   <url_regexp>/.*hikimoki.sakura.*/</url_regexp>
   <project_url>138ff27</project_url>
 </site>
-<!-- <site id="137">
+<site id="137">
+  <url_regexp>/.*cyber-rainforce.*/</url_regexp>
+  <project_url>596795d</project_url>
+</site>
+<site id="138">
+  <url_regexp>/.*fweb.midi.*~mikagami.atelier.*/</url_regexp>
+  <project_url>5967aac</project_url>
+</site>
+<site id="139">
+  <url_regexp>/.*kilisamenosekai.*fc2.*/</url_regexp>
+  <project_url>5967b0d</project_url>
+</site>
+<site id="140">
+  <url_regexp>/.*whitecafe.*sakura.*/</url_regexp>
+  <project_url>596c5bf</project_url>
+</site>
+<site id="141">
+  <url_regexp>/.*mitsu-evo.6.ql.bz.*/</url_regexp>
+  <project_url>596c657</project_url>
+</site>
+<site id="142">
+  <url_regexp>/.*pocket-se.*/</url_regexp>
+  <project_url>596c720</project_url>
+</site>
+<site id="143">
+  <url_regexp>/.*pocket-pic.*/</url_regexp>
+  <project_url>5970146</project_url>
+</site>
+<site id="144">
+  <url_regexp>/.*usagimask.*fc2.*/</url_regexp>
+  <project_url>59a4ae7</project_url>
+</site>
+<!-- <site id="145">
   <url_regexp>/.*.*/</url_regexp>
   <project_url></project_url>
 </site> -->
-
 </data>
 
 
