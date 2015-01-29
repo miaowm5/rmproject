@@ -3,8 +3,26 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
   <style type="text/css">
+    h1,p,tr{font-size: 0.9em;}
+    h1,p{
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+    h1{
+      font-weight: normal;
+      background-color: lavender;
+      border-top: 1px solid grey;
+      border-bottom: 1px solid grey;
+      padding-top: 0.2em;
+      padding-left: 1em;
+      height:1.2em;
+    }
+    table{
+      margin-left:50px
+    }
     .input,.error_input{ width:300px;}
     .error_area,.error_input{ background-color: darksalmon;}
+    label{cursor: pointer;}
     #etc,#result{ height:100px;}
     .child{ margin-left:20px;}
     .child2{ margin-left:40px;}
@@ -15,7 +33,7 @@
     }
     #result{ width:400px;}
     #logger{
-      background-color:lavender ;
+      background-color:lavender;
       margin-top:8px;
       height:200px;
       width:400px;
@@ -164,7 +182,7 @@
       }
 
       if(array[2][0].checked){result += rule_foramt('禁止用于以营利为目的的游戏中') }
-      if(array[2][1].checked){result += rule_foramt('禁止用于商业游戏中') }
+      if(!array[2][0].checked && array[2][1].checked){result += rule_foramt('禁止用于商业游戏中') }
       if(array[2][2].checked){result += rule_foramt('禁止用于题材不适当的游戏中') }
 
 
@@ -226,7 +244,7 @@
       onclick="this.focus();this.select()"></textarea>
     <div id="logger">控制台</div>
   </div>
-  <table border="0" style="margin-left:50px">
+  <table border="0">
     <!-- 站点名称 -->
     <tr><td>站点名称</td><td style="width:20px"></td><td><input id="name" class="input"/></td></tr>
     <!-- 站长 -->
@@ -235,66 +253,59 @@
     <tr><td>站点地址</td><td></td><td><input id="url" class="input"/></td></tr>
     <!-- 语言 -->
     <tr><td>语言</td><td></td><td id="language_a">
-      <input name="language" type="checkbox" />日语<br>
-      <input name="language" type="checkbox" />英语<br>
-      <input name="language" type="checkbox" />中文<br>
-      <input name="language" type="checkbox"
-        onclick='show_area("other_lan_area",this.checked)'/>其他语言<br>
+      <label><input name="language" type="checkbox" />日语</label><br>
+      <label><input name="language" type="checkbox" />英语</label><br>
+      <label><input name="language" type="checkbox" />中文</label><br>
+      <label><input name="language" type="checkbox"
+        onclick='show_area("other_lan_area",this.checked)'/>其他语言</label><br>
       <div id="other_lan_area" style="display:none">
         <input name="other_lan" class="child"/>
       </div>
     </td></tr>
     <!-- 墙？ -->
     <tr><td>墙？</td><td></td><td id="gfw_a">
-      <input name="gfw" type="radio" />有<input name="gfw" type="radio" />无<br>
+      <label><input name="gfw" type="radio" />有</label>
+      <label><input name="gfw" type="radio" />无</label>
     </td></tr>
     <!-- 素材内容 -->
     <tr><td>素材内容</td><td></td><td id="content">
       <!-- 图像素材 -->
-      <input name="material" type="checkbox" onclick='show_area("gra_mat_area",this.checked)'/>图像素材<br>
+      <label><input name="material" type="checkbox" onclick='show_area("gra_mat_area",this.checked)'/>图像素材</label><br>
         <div id="gra_mat_area" style="display:none">
-          <input name="gra_mat" type="checkbox" class="child"/>脸图素材<br>
-          <input name="gra_mat" type="checkbox" class="child"/>行走图素材<br>
-          <input name="gra_mat" type="checkbox" class="child"/>地图图块素材<br>
-          <input name="gra_mat" type="checkbox" class="child"/>战斗图素材<br>
-          <input name="gra_mat" type="checkbox" class="child"/>图标素材<br>
-          <input name="gra_mat" type="checkbox" class="child"/>动画素材<br>
-          <input name="gra_mat" type="checkbox" class="child"
+          <label><input name="gra_mat" type="checkbox" class="child"/>脸图素材</label><br>
+          <label><input name="gra_mat" type="checkbox" class="child"/>行走图素材</label><br>
+          <label><input name="gra_mat" type="checkbox" class="child"/>地图图块素材</label><br>
+          <label><input name="gra_mat" type="checkbox" class="child"/>战斗图素材</label><br>
+          <label><input name="gra_mat" type="checkbox" class="child"/>图标素材</label><br>
+          <label><input name="gra_mat" type="checkbox" class="child"/>动画素材</label><br>
+          <label><input name="gra_mat" type="checkbox" class="child"
             onclick='show_area("other_gra_mat",this.checked)'
-            />其他图像素材<br>
-          <div id="other_gra_mat" style="display:none">
-            <input name="other_gra" class="child"/><br>
-          </div>
+            />其他图像素材</label><br>
+          <div id="other_gra_mat" style="display:none"><input name="other_gra" class="child"/><br></div>
         </div>
       <!-- 音乐素材 -->
-      <input name="material" type="checkbox" onclick='show_area("aud_mat_area",this.checked)'/>音乐素材<br>
+      <label><input name="material" type="checkbox" onclick='show_area("aud_mat_area",this.checked)'/>音乐素材</label><br>
         <div id="aud_mat_area" style="display:none">
-          <input name="aud_mat" type="checkbox" class="child"/>音乐素材<br>
-          <input name="aud_mat" type="checkbox" class="child"/>音效素材<br>
-          <input name="aud_mat" type="checkbox" class="child"
-            onclick='show_area("other_aud_mat",this.checked)'/>其他声音素材<br>
-          <div id="other_aud_mat" style="display:none">
-            <input name="other_aud" class="child"/><br>
-          </div>
+          <label><input name="aud_mat" type="checkbox" class="child"/>音乐素材</label><br>
+          <label><input name="aud_mat" type="checkbox" class="child"/>音效素材</label><br>
+          <label><input name="aud_mat" type="checkbox" class="child"
+            onclick='show_area("other_aud_mat",this.checked)'/>其他声音素材</label><br>
+          <div id="other_aud_mat" style="display:none"><input name="other_aud" class="child"/><br></div>
         </div>
       <!-- 脚本素材 -->
-      <input name="material" type="checkbox" onclick='show_area("scr_mat_area",this.checked)' />脚本素材<br>
+      <label><input name="material" type="checkbox" onclick='show_area("scr_mat_area",this.checked)' />脚本素材</label><br>
         <div id="scr_mat_area" style="display:none">
-          <input name="scr_mat" type="checkbox" class="child"/>RGSS1<br>
-          <input name="scr_mat" type="checkbox" class="child"/>RGSS2<br>
-          <input name="scr_mat" type="checkbox" class="child"/>RGSS3<br>
-          <input name="scr_mat" type="checkbox" class="child"
-            onclick='show_area("other_scr_mat",this.checked)'/>其他脚本素材<br>
-          <div id="other_scr_mat" style="display:none">
-            <input name="other_scr" class="child"/><br>
-          </div>
+          <label><input name="scr_mat" type="checkbox" class="child"/>RGSS1</label><br>
+          <label><input name="scr_mat" type="checkbox" class="child"/>RGSS2</label><br>
+          <label><input name="scr_mat" type="checkbox" class="child"/>RGSS3</label><br>
+          <label><input name="scr_mat" type="checkbox" class="child"
+            onclick='show_area("other_scr_mat",this.checked)'/>其他脚本素材</label><br>
+          <div id="other_scr_mat" style="display:none"><input name="other_scr" class="child"/><br></div>
         </div>
       <!-- 其他素材 -->
-      <input name="material" type="checkbox"
-        onclick='show_area("other_material",this.checked)'/>其他素材<br>
-        <div id="other_material" style="display:none">
-          <input name="other_mat" class="child"/><br>
-        </div>
+      <label><input name="material" type="checkbox"
+        onclick='show_area("other_material",this.checked)'/>其他素材</label><br>
+        <div id="other_material" style="display:none"><input name="other_mat" class="child"/><br></div>
     </td></tr>
     <!-- 素材地址 -->
     <tr><td>素材地址</td><td></td><td><input id="addr" class="input"/></td></tr>
@@ -303,38 +314,38 @@
     <!-- 使用规约 -->
     <tr><td>使用规约</td><td></td><td>
 
-      <hr>一、与素材作者有关的相关规定<br><hr>
-      不需要<br>
-        <input name="r1" type="checkbox" class="child"
-          onclick='close_check("r1",3,this.checked)'/>署名</input><br>
-        <input name="r1" type="checkbox" class="child"
-          onclick='close_check("r1",4,this.checked)'/>下载报告</input><br>
-        <input name="r1" type="checkbox" class="child"
-          onclick='close_check("r1",5,this.checked)'/>使用报告</input><br>
-      需要<br>
-        <input name="r1" type="checkbox" class="child"
-          onclick='close_check("r1",0,this.checked)'/>署名</input><br>
-        <input name="r1" type="checkbox" class="child"
-          onclick='close_check("r1",1,this.checked)'/>下载报告</input><br>
-        <input name="r1" type="checkbox" class="child"
-          onclick='close_check("r1",2,this.checked)'/>使用报告</input><br>
+      <h1>与素材作者有关的相关规定</h1>
+      <p>不需要</p>
+        <label><input name="r1" type="checkbox" class="child"
+          onclick='close_check("r1",3,this.checked)'/>署名</label><br>
+        <label><input name="r1" type="checkbox" class="child"
+          onclick='close_check("r1",4,this.checked)'/>下载报告</label><br>
+        <label><input name="r1" type="checkbox" class="child"
+          onclick='close_check("r1",5,this.checked)'/>使用报告</label><br>
+      <p>需要</p>
+        <label><input name="r1" type="checkbox" class="child"
+          onclick='close_check("r1",0,this.checked)'/>署名</label><br>
+        <label><input name="r1" type="checkbox" class="child"
+          onclick='close_check("r1",1,this.checked)'/>下载报告</label><br>
+        <label><input name="r1" type="checkbox" class="child"
+          onclick='close_check("r1",2,this.checked)'/>使用报告</label><br>
 
-      <hr>二、对于游戏类型的相关规定<br><hr>
-      允许的游戏类型<br>
-        <input name="r4" type="checkbox" class="child"
-          onclick='close_check("r6",0,this.checked);show_area("com_game_area",this.checked)'/>收费游戏</input><br>
+      <h1>对于游戏类型的相关规定</h1>
+      <p>允许的游戏类型</p>
+        <label><input name="r4" type="checkbox" class="child"
+          onclick='close_check("r6",0,this.checked);show_area("com_game_area",this.checked)'/>收费游戏</label><br>
         <div id="com_game_area" style="display:none">
-          <input name="r5" type="checkbox" class="child2"/>同人游戏</input><br>
-          <input name="r5" type="checkbox" class="child2"
-            onclick='close_check("r6",1,this.checked)'/>商业游戏</input><br>
+          <label><input name="r5" type="checkbox" class="child2"/>同人游戏</label><br>
+          <label><input name="r5" type="checkbox" class="child2"
+            onclick='close_check("r6",1,this.checked)'/>商业游戏</label><br>
         </div>
-        <input name="r4" type="checkbox" class="child"
-          onclick='close_check("r6",0,this.checked)'/>共享软件</input><br>
-        <input name="r4" type="checkbox" class="child"/>参加比赛的游戏</input><br>
-        <input name="r4" type="checkbox" class="child"
-          onclick='close_check("r6",2,this.checked)'/>特殊题材的游戏</input><br>
-      不允许的游戏类型<br>
-        <input name="r6" type="checkbox" class="child"
+        <label><input name="r4" type="checkbox" class="child"
+          onclick='close_check("r6",0,this.checked)'/>共享软件</label><br>
+        <label><input name="r4" type="checkbox" class="child"/>参加比赛的游戏</label><br>
+        <label><input name="r4" type="checkbox" class="child"
+          onclick='close_check("r6",2,this.checked)'/>特殊题材的游戏</label><br>
+      <p>不允许的游戏类型</p>
+        <label><input name="r6" type="checkbox" class="child"
           onclick='
           close_check("r4",0,this.checked);
           close_check("r4",1,this.checked);
@@ -343,29 +354,28 @@
             document.getElementsByName("r5")[0].checked = false
             document.getElementsByName("r5")[1].checked = false
           }
-          '/>
-          以营利为目的游戏</input><br>
-        <input name="r6" type="checkbox" class="child"
-          onclick='close_check("r5",1,this.checked)'/>商业游戏</input><br>
-        <input name="r6" type="checkbox" class="child"
-          onclick='close_check("r4",3,this.checked)'/>特殊题材的游戏</input><br>
+          '/>以营利为目的游戏</label><br>
+        <label><input name="r6" type="checkbox" class="child"
+          onclick='close_check("r5",1,this.checked)'/>商业游戏</label><br>
+        <label><input name="r6" type="checkbox" class="child"
+          onclick='close_check("r4",3,this.checked)'/>特殊题材的游戏</label><br>
 
-      <hr>三、素材使用/加工<br><hr>
-        <input name="r2" type="checkbox" class="child"/>包含RM素材改造素材</input><br>
-        <input name="r2" type="checkbox" class="child"
+      <h1>素材使用/加工</h1>
+        <label><input name="r2" type="checkbox" class="child"/>包含RM素材改造素材</label><br>
+        <label><input name="r2" type="checkbox" class="child"
           onclick='
             if(this.checked){document.getElementsByName("r2")[2].disabled = false}
             else{
               document.getElementsByName("r2")[2].disabled = true
               document.getElementsByName("r2")[2].checked = false
             }
-          '/>允许加工</input><br>
-        <input name="r2" type="checkbox" disabled="true" class="child2"/>不能破坏素材</input><br>
+          '/>允许加工</label><br>
+        <label><input name="r2" type="checkbox" disabled="true" class="child2"/>不能破坏素材</label><br>
 
-      <hr>四、对于二次配布·转载的相关规定<br><hr>
-        <input name="r3" type="radio" class="child">可以自由的二次配布</input><br>
-        <input name="r3" type="radio" class="child">加工后可发布</input><br>
-        <input name="r3" type="radio" class="child">禁止转载·二次配布</input><br>
+      <h1>对于二次配布·转载的相关规定</h1>
+        <label><input name="r3" type="radio" class="child">可以自由的二次配布</label><br>
+        <label><input name="r3" type="radio" class="child">加工后可发布</label><br>
+        <label><input name="r3" type="radio" class="child">禁止转载·二次配布</label><br><br>
     </td></tr>
     <!-- 翻译者 -->
     <tr><td>翻译者</td><td></td><td><input id="up" class="input"/></td></tr>
