@@ -64,9 +64,11 @@
       result += "<strong>素材利用规约：</strong></p><blockquote><p><strong>原文</strong>" + "</p><p>"
       result += result_array[7] + '</p><p>'
       result += '<a href="http://rmtemp.lofter.com/post/3e26fe_156e50a" target="_blank">基本规则</a>'
-      result += '</p><p>' + result_array[8]
-      result += "</p>（翻译By " + result_array[9]
-      result += " 最终翻译确认时间 " + result_array[10] + "）</p></blockquote><p>"
+      result += '</p><p>' + result_array[8] + "</p><p>（";
+      if (result_array[9]) {
+        result += "翻译By " + result_array[9] + " ";
+      }
+      result += "最终翻译确认时间 " + result_array[10] + "）</p></blockquote><p>"
       result += "<strong>备注：</strong></p><p>" + result_array[11]
       return result
     }
