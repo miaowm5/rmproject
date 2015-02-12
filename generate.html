@@ -233,6 +233,14 @@
 
       p("预览结果<br><br>" + document.getElementById("result").value)
     }
+
+    function url_auto_complete(changed_input) {
+        ["url", "addr", "rule"].forEach(function(id) {
+            if(!document.getElementById(id).value) {
+                document.getElementById(id).value = changed_input.value;
+            }
+        })
+    }
   </script>
 </head>
 <body>
@@ -250,7 +258,7 @@
     <!-- 站长 -->
     <tr><td>站长</td><td></td><td><input id="host" class="input"/></td></tr>
     <!-- 站点地址 -->
-    <tr><td>站点地址</td><td></td><td><input id="url" class="input"/></td></tr>
+    <tr><td>站点地址</td><td></td><td><input id="url" class="input" onchange="url_auto_complete(this)"/></td></tr>
     <!-- 语言 -->
     <tr><td>语言</td><td></td><td id="language_a">
       <label><input name="language" type="checkbox" />日语</label><br>
@@ -308,9 +316,9 @@
         <div id="other_material" style="display:none"><input name="other_mat" class="child"/><br></div>
     </td></tr>
     <!-- 素材地址 -->
-    <tr><td>素材地址</td><td></td><td><input id="addr" class="input"/></td></tr>
+    <tr><td>素材地址</td><td></td><td><input id="addr" class="input" onchange="url_auto_complete(this)" /></td></tr>
     <!-- 规约原文 -->
-    <tr><td>规约原文</td><td></td><td><input id="rule" class="input"/></td></tr>
+    <tr><td>规约原文</td><td></td><td><input id="rule" class="input" onchange="url_auto_complete(this)" /></td></tr>
     <!-- 使用规约 -->
     <tr><td>使用规约</td><td></td><td>
 
