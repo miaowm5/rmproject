@@ -278,7 +278,7 @@
 
       list = document.getElementsByTagName("input")
       for(i = 0 ; i < list.length ; i += 1 ){
-        if (list[i].getAttribute('type') != 'text'){ continue }
+        if (list[i].getAttribute('type') != 'text' && list[i].getAttribute('type') != null){ continue }
         add_event(list[i],'click',function(){ this.focus(); this.select() })
       }
       for(i = 0 ; i < list.length ; i += 1 ){
