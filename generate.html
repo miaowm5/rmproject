@@ -36,13 +36,12 @@
     }
     .quick_button {
       position: absolute;
-      margin-top: auto;
-      margin-bottom: auto;
-      left: 74%;
+      left: 72%;
       top:5px;
       width:6em;
-      text-decoration: none;
-      color: grey;
+      color: #404040;
+      background-color: white;
+      padding-left: 0.5em;
     }
     #result_area{
       margin-left:50%;
@@ -51,31 +50,38 @@
       width:43%;
     }
     #result{ width:96%;}
-    #logger{
-      background-color:lavender;
+    #result_area > div {
       margin-top:8px;
-      height:200px;
-      width:98%;
-      overflow-y:scroll
+      width:94%;
+      overflow-y:scroll;
+      background-color:lavender;
+      padding: 0.5em;
     }
+    #logger{ height:200px; }
+    #index{ height:100px; }
   </style>
   <script type="text/javascript">
+    // 在控制台输出文字
     function p(string,redraw){
       if(redraw){ document.getElementById("logger").innerHTML = "" }
       document.getElementById("logger").innerHTML += "<br>"
       document.getElementById("logger").innerHTML += string
     }
+    // 添加事件监听
     function add_event(element,event,listner){
       if (element.addEventListener){ element.addEventListener(event,listner,false) }
       else if (element.attachEvent){ element.attachEvent('on'+event,function(){ listner.call(element) } ) }
     }
+    // 显示指定区域
     function show_area(id,status){
       if(status){document.getElementById(id).style.display="inline"}
       else{document.getElementById(id).style.display="none"}
     }
+    // 取消互斥内容的选择状态
     function close_check(name,pos,status){
       if(status){document.getElementsByName(name)[pos].checked = false}
     }
+    // 获取结果列表
     function get_result(result_array){
       var result = "<strong>站点名称：</strong>" + result_array[0] + "</p><p>"
       result += "<strong>站长：</strong>" + result_array[1] + "</p><p>"
@@ -95,16 +101,19 @@
       result += "<strong>备注：</strong></p><p>" + result_array[11]
       return result
     }
+    // 将网址字符串转换为标准HTML代码
     function url_format(url,name){
       var result = '<a href="' + url + '" target="_blank">'
       if(name){result += name + '</a>'}
       else{result += url + '</a>'}
       return result
     }
+    // 在一个顿号分隔的列表文字末尾增加新的内容
     function add_new_content(result,string){
       if (result != ""){result += "、"}
       return result + string
     }
+    // 将一个列表中选择的选项转换为对应的列表字符串
     function get_list(array_base,name_list,array_more){
       var array = document.getElementsByName(array_base)
       var result = ""
@@ -118,12 +127,14 @@
       }
       return result
     }
+    // 获取当前系统时间
     function get_time(){
       var date = new Date()
       var string = ""
       string += date.getFullYear() + '.' + (date.getMonth()+1) + '.' + date.getDate()
       return string
     }
+    // 获取素材内容列表
     function get_content_list(){
       var result = ""
       var array = document.getElementsByName("material")
@@ -142,8 +153,8 @@
       }
       return result
     }
+    // 将素材规约字符串转换为标准HTML
     function rule_foramt(rule){
-      var result = ""
       var list = {
         '需要署名' : '156e50f', '不需要署名' : '156e513', '不需要下载报告' : '40beac5',
         '不需要使用报告' : '40beacb', '不需要报告' : '156f16f', '需要下载报告' : '156e526',
@@ -166,6 +177,7 @@
       }
       return url_format('http://rmtemp.lofter.com/post/3e26fe_'+list[rule],rule) + "</p><p>"
     }
+    // 获取规约列表
     function get_rule_list(){
       var result = ""
       var array
@@ -229,17 +241,50 @@
       }
       return result
     }
+    // 将素材目录字符串转换为标准超链接
+    function index_foramt(rule){
+      var list = {
+        '脸图' : '166bf69', '行走图' : '166bf61', '图块' : '166bfb9', '战斗图' : '166bf7f',
+        '图标' : '166bf98', '动画' : '166bf9a', '其他' : '166d022',
+
+        '音乐' : '166cfbd', '音效' : '166cfc6',
+
+        'RGSS1' : '166cfcc', 'RGSS2' : '166cfce', 'RGSS3' : '166cfd3'
+      }
+      return url_format('http://www.lofter.com/edit/3e26fe_'+list[rule]) + "</p><p>"
+    }
+    // 输出目录编辑页面网址
+    function show_index_url(){
+      function show_index_url2(){}
+      var func = new show_index_url2();
+      func.mymethod = function(element,list,content_list){
+        var i
+        for (i = 0; i < list.length; i += 1) {
+          if(!content_list[i].checked){ continue }
+          element.innerHTML += index_foramt(list[i])
+        };
+      }
+      var element = document.getElementById("index")
+      element.innerHTML = "点击地址编辑素材目录：<br><p>"
+      func.mymethod(element,["脸图","行走图","图块","战斗图","图标","动画","其他"],document.getElementsByName("gra_mat"))
+      func.mymethod(element,["音乐","音效"],document.getElementsByName("aud_mat"))
+      func.mymethod(element,["RGSS1","RGSS2","RGSS3"],document.getElementsByName("scr_mat"))
+      element.innerHTML += "</p>"
+    }
+    // 检查是否有未填的关键文本框
     function check_input(id){
       var value = document.getElementById(id).value
       if(value == ""){document.getElementById(id).className = "error_input"}
       else{document.getElementById(id).className = "input"}
       return value
     }
+    // 检查是否有未填的关键信息
     function check_area(value,id){
       if(value == ""){document.getElementById(id).className = "error_area"}
       else{document.getElementById(id).className = ""}
       return value
     }
+    // 显示最终结果
     function show_result(){
       var result_array = [0]
       result_array[0] = check_input("name")
@@ -256,14 +301,17 @@
       result_array[11] = document.getElementById("etc").value.replace(/\n/g,'</p><p>') + '</p>'
       document.getElementById("result").value = get_result(result_array)
 
+      show_index_url()
+
       p("预览结果<br><br>" + document.getElementById("result").value , true)
     }
-    function url_auto_complete() {
+    // 网址自动填充
+    function url_auto_complete(parm) {
       var list = ["url", "addr", "rule"]
-      var element = document.getElementById( this.getAttribute('value') )
+      var element = document.getElementById( parm )
       var value
       for( var i = 0; i < list.length; i += 1){
-        if( this.getAttribute('value') == list[i] ){ continue }
+        if( parm == list[i] ){ continue }
         value = document.getElementById(list[i]).value
         if( value && element.value != value ) {
           element.value = value
@@ -271,7 +319,8 @@
         }
       }
     }
-    function load_over(){
+    // 为页面中的元素添加事件
+    function add_listner(){
       var i,list
       add_event(document.getElementById("show_result"),'click',show_result)
       add_event(document.getElementById("result"),'click',function(){ this.focus(); this.select() })
@@ -285,11 +334,20 @@
         if (list[i].getAttribute('func') != 'more_button'){ continue }
         add_event(list[i],'click',function(){ show_area(this.getAttribute('value'),this.checked) })
       }
-      list = document.getElementsByTagName("label")
-      for(i = 0 ; i < list.length ; i += 1 ){
-        if (list[i].getAttribute('class') != 'quick_button'){ continue }
-        add_event(list[i],'click',url_auto_complete)
-      }
+
+      add_event(document.getElementById("url_button"),'click',function(){
+            var url = document.getElementById("url").value
+            if(!url) { return }
+            url = "http://miaowm5.github.io/rmproject/bookmarklet/index.html#" + url.substr(7)
+            window.open(url)
+          }
+        )
+      add_event(document.getElementById("addr_button"),'click',function(){ url_auto_complete("addr") })
+      add_event(document.getElementById("rule_button"),'click',function(){ url_auto_complete("rule") })
+    }
+    // 页面加载完成后执行的操作
+    function load_over(){
+      add_listner()
     }
   </script>
 </head>
@@ -299,6 +357,7 @@
     <button id="show_result">输出结果</button><br><br>
     <textarea id="result" tabIndex="99"></textarea>
     <div id="logger">控制台</div>
+    <div id="index"></div>
   </div>
   <table>
     <!-- 站点名称 -->
@@ -308,7 +367,7 @@
     <!-- 站点地址 -->
     <tr><td>站点地址</td><td></td>
       <td><input id="url" class="input"/>
-      <label class="quick_button" value="url">使用已有地址</button>
+      <label class="quick_button" id='url_button'>检查是否重复</button>
     </td></tr>
     <!-- 语言 -->
     <tr><td>语言</td><td></td><td id="language_a">
@@ -366,12 +425,12 @@
     <!-- 素材地址 -->
     <tr><td>素材地址</td><td></td><td>
       <input id="addr" class="input" />
-      <label class="quick_button" value="addr">使用已有地址</button>
+      <label class="quick_button" id="addr_button">使用已有地址</button>
     </td></tr>
     <!-- 规约原文 -->
     <tr><td>规约原文</td><td></td><td>
       <input id="rule" class="input" />
-      <label class="quick_button" value="rule">使用已有地址</button>
+      <label class="quick_button" id="rule_button">使用已有地址</button>
     </td></tr>
     <!-- 使用规约 -->
     <tr><td>使用规约</td><td></td><td>
