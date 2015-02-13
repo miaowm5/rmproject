@@ -256,7 +256,7 @@
       result_array[11] = document.getElementById("etc").value.replace(/\n/g,'</p><p>') + '</p>'
       document.getElementById("result").value = get_result(result_array)
 
-      p("预览结果<br><br>" + document.getElementById("result").value)
+      p("预览结果<br><br>" + document.getElementById("result").value , true)
     }
     function url_auto_complete() {
       var list = ["url", "addr", "rule"]
