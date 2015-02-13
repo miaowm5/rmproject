@@ -581,7 +581,103 @@
   <url_regexp>/.*usagimask.*fc2.*/</url_regexp>
   <project_url>59a4ae7</project_url>
 </site>
-<!-- <site id="145">
+<site id="145">
+  <url_regexp>/.*akunou.*/</url_regexp>
+  <project_url>59ac1d3</project_url>
+</site>
+<site id="146">
+  <url_regexp>/.*medaca99jp.*fc2.*/</url_regexp>
+  <project_url>59ac204</project_url>
+</site>
+<site id="147">
+  <url_regexp>/.*tandess.*music.*/</url_regexp>
+  <project_url>59ac28d</project_url>
+</site>
+<site id="148">
+  <url_regexp>/.*osabisi.*sakura.*/</url_regexp>
+  <project_url>59ac2bc</project_url>
+</site>
+<site id="149">
+  <url_regexp>/.*d-symphony.nsf.*/</url_regexp>
+  <project_url>59ac2db</project_url>
+</site>
+<site id="150">
+  <url_regexp>/.*hagall.hacca.*/</url_regexp>
+  <project_url>59ac316</project_url>
+</site>
+<site id="151">
+  <url_regexp>/.*lucea.grandioso.*/</url_regexp>
+  <project_url>59c2bfd</project_url>
+</site>
+<site id="152">
+  <url_regexp>/.*skipmore.*/</url_regexp>
+  <project_url>59c2c23</project_url>
+</site>
+<site id="153">
+  <url_regexp>/.*01earth.*sound.*/</url_regexp>
+  <project_url>59c7f19</project_url>
+</site>
+<site id="154">
+  <url_regexp>/.*yoo-rm.lofter.*/</url_regexp>
+  <project_url>59e4797</project_url>
+</site>
+<site id="155">
+  <url_regexp>/.*ashinari.*/</url_regexp>
+  <project_url>59f8202</project_url>
+</site>
+<site id="156">
+  <url_regexp>/.*modelpiece.*/</url_regexp>
+  <project_url>59f823b</project_url>
+</site>
+<site id="157">
+  <url_regexp>/.*soundwich.vfxs.*/</url_regexp>
+  <project_url>59f8289</project_url>
+</site>
+<site id="158">
+  <url_regexp>/.*hurtrecord.*/</url_regexp>
+  <project_url>59f82e0</project_url>
+</site>
+<site id="159">
+  <url_regexp>/.*studio-74.*/</url_regexp>
+  <project_url>59f8344</project_url>
+</site>
+<site id="160">
+  <url_regexp>/.*creature-ya.*/</url_regexp>
+  <project_url>59f8388</project_url>
+</site>
+<site id="161">
+  <url_regexp>/.*wa-gokoro.sblo.*/</url_regexp>
+  <project_url>59fcf86</project_url>
+</site>
+<site id="161">
+  <url_regexp>/.*him2.*sakura.*labo.*/</url_regexp>
+  <project_url>59fcf86</project_url>
+</site>
+<site id="162">
+  <url_regexp>/.*tokudaya.*/</url_regexp>
+  <project_url>5a7fa44</project_url>
+</site>
+<site id="163">
+  <url_regexp>/.*airysound.*/</url_regexp>
+  <project_url>5aaf142</project_url>
+</site>
+<site id="164">
+  <url_regexp>/.*livedoor.*kuremente-rgssscript.*/</url_regexp>
+  <project_url>5bbbeae</project_url>
+</site>
+<site id="165">
+  <url_regexp>/.*sepher.*/</url_regexp>
+  <project_url>5bbbf1d</project_url>
+</site>
+<site id="166">
+  <url_regexp>/.*petitrare.*/</url_regexp>
+  <project_url>5bbc0c4</project_url>
+</site>
+<site id="167">
+  <url_regexp>/.*moomoo.asablo.*/</url_regexp>
+  <project_url>5bbc0fa</project_url>
+</site>
+<!-- <site id="">
   <url_regexp>/.*.*/</url_regexp>
   <project_url></project_url>
 </site> -->
