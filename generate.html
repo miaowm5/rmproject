@@ -18,33 +18,56 @@
       height:1.2em;
     }
     table{
-      margin-left:50px
+      margin-left:2%;
+      width:45%;
+      border: 0px;
     }
-    .input,.error_input{ width:300px;}
+    .left_width{ width:20%;}
+    .distance{ width:3%;}
+    .right_width{ width:75%;}
+    .input,.error_input{ width:100%; }
     .error_area,.error_input{ background-color: darksalmon;}
     label{cursor: pointer;}
     #etc,#result{ height:100px;}
     .child{ margin-left:20px;}
     .child2{ margin-left:40px;}
+    td{
+      position: relative;
+    }
+    .quick_button {
+      position: absolute;
+      margin-top: auto;
+      margin-bottom: auto;
+      left: 74%;
+      top:5px;
+      width:6em;
+      text-decoration: none;
+      color: grey;
+    }
     #result_area{
-      margin-left:500px;
+      margin-left:50%;
       position:fixed;
       margin-top:20px;
+      width:43%;
     }
-    #result{ width:400px;}
+    #result{ width:96%;}
     #logger{
       background-color:lavender;
       margin-top:8px;
       height:200px;
-      width:400px;
+      width:98%;
       overflow-y:scroll
     }
   </style>
   <script type="text/javascript">
     function p(string,redraw){
       if(redraw){ document.getElementById("logger").innerHTML = "" }
-      document.getElementById("logger").innerHTML = "<br>"
+      document.getElementById("logger").innerHTML += "<br>"
       document.getElementById("logger").innerHTML += string
+    }
+    function add_event(element,event,listner){
+      if (element.addEventListener){ element.addEventListener(event,listner,false) }
+      else if (element.attachEvent){ element.attachEvent('on'+event,function(){ listner.call(element) } ) }
     }
     function show_area(id,status){
       if(status){document.getElementById(id).style.display="inline"}
@@ -235,39 +258,64 @@
 
       p("预览结果<br><br>" + document.getElementById("result").value)
     }
+    function url_auto_complete() {
+      var list = ["url", "addr", "rule"]
+      var element = document.getElementById( this.getAttribute('value') )
+      var value
+      for( var i = 0; i < list.length; i += 1){
+        if( this.getAttribute('value') == list[i] ){ continue }
+        value = document.getElementById(list[i]).value
+        if( value && element.value != value ) {
+          element.value = value
+          break
+        }
+      }
+    }
+    function load_over(){
+      var i,list
+      add_event(document.getElementById("show_result"),'click',show_result)
+      add_event(document.getElementById("result"),'click',function(){ this.focus(); this.select() })
 
-    function url_auto_complete(changed_input) {
-        ["url", "addr", "rule"].forEach(function(id) {
-            if(!document.getElementById(id).value) {
-                document.getElementById(id).value = changed_input.value;
-            }
-        })
+      list = document.getElementsByTagName("input")
+      for(i = 0 ; i < list.length ; i += 1 ){
+        if (list[i].getAttribute('type') != 'text'){ continue }
+        add_event(list[i],'click',function(){ this.focus(); this.select() })
+      }
+      for(i = 0 ; i < list.length ; i += 1 ){
+        if (list[i].getAttribute('func') != 'more_button'){ continue }
+        add_event(list[i],'click',function(){ show_area(this.getAttribute('value'),this.checked) })
+      }
+      list = document.getElementsByTagName("label")
+      for(i = 0 ; i < list.length ; i += 1 ){
+        if (list[i].getAttribute('class') != 'quick_button'){ continue }
+        add_event(list[i],'click',url_auto_complete)
+      }
     }
   </script>
 </head>
-<body>
+<body onload="load_over()">
   <!-- 最终结果 -->
   <div id="result_area">
-    <button onclick="show_result()">输出结果</button><br><br>
-    <textarea id="result"
-      tabIndex="99"
-      onclick="this.focus();this.select()"></textarea>
+    <button id="show_result">输出结果</button><br><br>
+    <textarea id="result" tabIndex="99"></textarea>
     <div id="logger">控制台</div>
   </div>
-  <table border="0">
+  <table>
     <!-- 站点名称 -->
-    <tr><td>站点名称</td><td style="width:20px"></td><td><input id="name" class="input"/></td></tr>
+    <tr><td class="left_width">站点名称</td><td class="distance"></td><td class="right_width"><input id="name" class="input" /></td></tr>
     <!-- 站长 -->
     <tr><td>站长</td><td></td><td><input id="host" class="input"/></td></tr>
     <!-- 站点地址 -->
-    <tr><td>站点地址</td><td></td><td><input id="url" class="input" onchange="url_auto_complete(this)"/></td></tr>
+    <tr><td>站点地址</td><td></td>
+      <td><input id="url" class="input"/>
+      <label class="quick_button" value="url">使用已有地址</button>
+    </td></tr>
     <!-- 语言 -->
     <tr><td>语言</td><td></td><td id="language_a">
       <label><input name="language" type="checkbox" />日语</label><br>
       <label><input name="language" type="checkbox" />英语</label><br>
       <label><input name="language" type="checkbox" />中文</label><br>
-      <label><input name="language" type="checkbox"
-        onclick='show_area("other_lan_area",this.checked)'/>其他语言</label><br>
+      <label><input name="language" type="checkbox" value="other_lan_area" func="more_button" />其他语言</label><br>
       <div id="other_lan_area" style="display:none">
         <input name="other_lan" class="child"/>
       </div>
@@ -280,7 +328,7 @@
     <!-- 素材内容 -->
     <tr><td>素材内容</td><td></td><td id="content">
       <!-- 图像素材 -->
-      <label><input name="material" type="checkbox" onclick='show_area("gra_mat_area",this.checked)'/>图像素材</label><br>
+      <label><input name="material" type="checkbox" value="gra_mat_area" func="more_button" />图像素材</label><br>
         <div id="gra_mat_area" style="display:none">
           <label><input name="gra_mat" type="checkbox" class="child"/>脸图素材</label><br>
           <label><input name="gra_mat" type="checkbox" class="child"/>行走图素材</label><br>
@@ -289,38 +337,42 @@
           <label><input name="gra_mat" type="checkbox" class="child"/>图标素材</label><br>
           <label><input name="gra_mat" type="checkbox" class="child"/>动画素材</label><br>
           <label><input name="gra_mat" type="checkbox" class="child"
-            onclick='show_area("other_gra_mat",this.checked)'
-            />其他图像素材</label><br>
+            value="other_gra_mat" func="more_button" />其他图像素材</label><br>
           <div id="other_gra_mat" style="display:none"><input name="other_gra" class="child"/><br></div>
         </div>
       <!-- 音乐素材 -->
-      <label><input name="material" type="checkbox" onclick='show_area("aud_mat_area",this.checked)'/>音乐素材</label><br>
+      <label><input name="material" type="checkbox" value="aud_mat_area" func="more_button" />音乐素材</label><br>
         <div id="aud_mat_area" style="display:none">
           <label><input name="aud_mat" type="checkbox" class="child"/>音乐素材</label><br>
           <label><input name="aud_mat" type="checkbox" class="child"/>音效素材</label><br>
           <label><input name="aud_mat" type="checkbox" class="child"
-            onclick='show_area("other_aud_mat",this.checked)'/>其他声音素材</label><br>
+            value="other_aud_mat" func="more_button" />其他声音素材</label><br>
           <div id="other_aud_mat" style="display:none"><input name="other_aud" class="child"/><br></div>
         </div>
       <!-- 脚本素材 -->
-      <label><input name="material" type="checkbox" onclick='show_area("scr_mat_area",this.checked)' />脚本素材</label><br>
+      <label><input name="material" type="checkbox" value="scr_mat_area" func="more_button" />脚本素材</label><br>
         <div id="scr_mat_area" style="display:none">
           <label><input name="scr_mat" type="checkbox" class="child"/>RGSS1</label><br>
           <label><input name="scr_mat" type="checkbox" class="child"/>RGSS2</label><br>
           <label><input name="scr_mat" type="checkbox" class="child"/>RGSS3</label><br>
           <label><input name="scr_mat" type="checkbox" class="child"
-            onclick='show_area("other_scr_mat",this.checked)'/>其他脚本素材</label><br>
+            value="other_scr_mat" func="more_button" />其他脚本素材</label><br>
           <div id="other_scr_mat" style="display:none"><input name="other_scr" class="child"/><br></div>
         </div>
       <!-- 其他素材 -->
-      <label><input name="material" type="checkbox"
-        onclick='show_area("other_material",this.checked)'/>其他素材</label><br>
+      <label><input name="material" type="checkbox" value="other_material" func="more_button" />其他素材</label><br>
         <div id="other_material" style="display:none"><input name="other_mat" class="child"/><br></div>
     </td></tr>
     <!-- 素材地址 -->
-    <tr><td>素材地址</td><td></td><td><input id="addr" class="input" onchange="url_auto_complete(this)" /></td></tr>
+    <tr><td>素材地址</td><td></td><td>
+      <input id="addr" class="input" />
+      <label class="quick_button" value="addr">使用已有地址</button>
+    </td></tr>
     <!-- 规约原文 -->
-    <tr><td>规约原文</td><td></td><td><input id="rule" class="input" onchange="url_auto_complete(this)" /></td></tr>
+    <tr><td>规约原文</td><td></td><td>
+      <input id="rule" class="input" />
+      <label class="quick_button" value="rule">使用已有地址</button>
+    </td></tr>
     <!-- 使用规约 -->
     <tr><td>使用规约</td><td></td><td>
 
