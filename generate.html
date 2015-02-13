@@ -3,7 +3,8 @@
 <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
   <style type="text/css">
-    h1,p,tr{font-size: 0.9em;}
+    body {min-width: 800px;}
+    h1,p,tr{ font-size: 0.9em; }
     h1,p{
       margin-top: 0.5em;
       margin-bottom: 0.5em;
@@ -18,22 +19,20 @@
       height:1.2em;
     }
     table{
-      margin-left:2%;
+      margin-left:2.5%;
       width:45%;
-      border: 0px;
     }
-    .left_width{ width:20%;}
-    .distance{ width:3%;}
-    .right_width{ width:75%;}
+    .left_width{
+      width:18%;
+      min-width: 4em;
+    }
     .input,.error_input{ width:100%; }
     .error_area,.error_input{ background-color: darksalmon;}
     label{cursor: pointer;}
     #etc,#result{ height:100px;}
     .child{ margin-left:20px;}
     .child2{ margin-left:40px;}
-    td{
-      position: relative;
-    }
+    td{ position: relative; }
     .quick_button {
       position: absolute;
       left: 72%;
@@ -44,7 +43,7 @@
       padding-left: 0.5em;
     }
     #result_area{
-      margin-left:50%;
+      margin-left:52%;
       position:fixed;
       margin-top:20px;
       width:43%;
@@ -57,8 +56,8 @@
       background-color:lavender;
       padding: 0.5em;
     }
-    #logger{ height:200px; }
-    #index{ height:100px; }
+    #logger{ height:10em; }
+    #index{ height:10em; }
   </style>
   <script type="text/javascript">
     // 在控制台输出文字
@@ -361,16 +360,16 @@
   </div>
   <table>
     <!-- 站点名称 -->
-    <tr><td class="left_width">站点名称</td><td class="distance"></td><td class="right_width"><input id="name" class="input" /></td></tr>
+    <tr><td class="left_width">站点名称</td><td class="right_width"><input id="name" class="input" /></td></tr>
     <!-- 站长 -->
-    <tr><td>站长</td><td></td><td><input id="host" class="input"/></td></tr>
+    <tr><td>站长</td><td><input id="host" class="input"/></td></tr>
     <!-- 站点地址 -->
-    <tr><td>站点地址</td><td></td>
+    <tr><td>站点地址</td>
       <td><input id="url" class="input"/>
       <label class="quick_button" id='url_button'>检查是否重复</button>
     </td></tr>
     <!-- 语言 -->
-    <tr><td>语言</td><td></td><td id="language_a">
+    <tr><td>语言</td><td id="language_a">
       <label><input name="language" type="checkbox" />日语</label><br>
       <label><input name="language" type="checkbox" />英语</label><br>
       <label><input name="language" type="checkbox" />中文</label><br>
@@ -380,12 +379,12 @@
       </div>
     </td></tr>
     <!-- 墙？ -->
-    <tr><td>墙？</td><td></td><td id="gfw_a">
+    <tr><td>墙？</td><td id="gfw_a">
       <label><input name="gfw" type="radio" />有</label>
       <label><input name="gfw" type="radio" />无</label>
     </td></tr>
     <!-- 素材内容 -->
-    <tr><td>素材内容</td><td></td><td id="content">
+    <tr><td>素材内容</td><td id="content">
       <!-- 图像素材 -->
       <label><input name="material" type="checkbox" value="gra_mat_area" func="more_button" />图像素材</label><br>
         <div id="gra_mat_area" style="display:none">
@@ -423,17 +422,17 @@
         <div id="other_material" style="display:none"><input name="other_mat" class="child"/><br></div>
     </td></tr>
     <!-- 素材地址 -->
-    <tr><td>素材地址</td><td></td><td>
+    <tr><td>素材地址</td><td>
       <input id="addr" class="input" />
       <label class="quick_button" id="addr_button">使用已有地址</button>
     </td></tr>
     <!-- 规约原文 -->
-    <tr><td>规约原文</td><td></td><td>
+    <tr><td>规约原文</td><td>
       <input id="rule" class="input" />
       <label class="quick_button" id="rule_button">使用已有地址</button>
     </td></tr>
     <!-- 使用规约 -->
-    <tr><td>使用规约</td><td></td><td>
+    <tr><td>使用规约</td><td>
 
       <h1>与素材作者有关的相关规定</h1>
       <p>不需要</p>
@@ -499,9 +498,9 @@
         <label><input name="r3" type="radio" class="child">禁止转载·二次配布</label><br><br>
     </td></tr>
     <!-- 翻译者 -->
-    <tr><td>翻译者</td><td></td><td><input id="up" class="input"/></td></tr>
+    <tr><td>翻译者</td><td><input id="up" class="input"/></td></tr>
     <!-- 备注 -->
-    <tr><td>备注</td><td></td><td><textarea id="etc" class="input"></textarea></td></tr>
+    <tr><td>备注</td><td><textarea id="etc" class="input"></textarea></td></tr>
   </table>
   <script type="text/javascript">
     document.getElementById('up').value = window.location.hash.slice(1)
