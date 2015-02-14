@@ -48,7 +48,13 @@
       margin-top:20px;
       width:43%;
     }
-    #result{ width:96%;}
+    #result{
+      width:96%;
+      margin-top: 0.5em;
+    }
+    #reload_page{
+      margin-left: 1em;
+    }
     #result_area > div {
       margin-top:8px;
       width:94%;
@@ -319,6 +325,7 @@
     function add_listner(){
       var i,list
       add_event(document.getElementById("show_result"),'click',show_result)
+      add_event(document.getElementById("reload_page"),'click',function(){ document.location.reload() })
       add_event(document.getElementById("result"),'click',function(){ this.focus(); this.select() })
 
       list = document.getElementsByTagName("input")
@@ -353,7 +360,7 @@
 <body onload="load_over()">
   <!-- 最终结果 -->
   <div id="result_area">
-    <button id="show_result">输出结果</button><br><br>
+    <button id="show_result">输出结果</button><button id="reload_page">清空输入</button><br>
     <textarea id="result" tabIndex="99"></textarea>
     <div id="logger">控制台</div>
     <div id="index"></div>
