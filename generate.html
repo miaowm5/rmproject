@@ -2,6 +2,7 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.11.2.js"></script>
   <style type="text/css">
     body {min-width: 800px;}
     h1,p,tr{ font-size: 0.9em; }
@@ -26,8 +27,10 @@
       width:18%;
       min-width: 4em;
     }
-    .input,.error_input{ width:100%; }
-    .error_area,.error_input{ background-color: darksalmon;}
+    .input{ width:100%; }
+    .error{
+      width:100%;
+      background-color: darksalmon;}
     label{cursor: pointer;}
     #etc,#result{ height:100px;}
     .child{ margin-left:20px;}
@@ -35,7 +38,6 @@
     td{ position: relative; }
     .quick_button {
       position: absolute;
-      left: 72%;
       top:5px;
       width:6em;
       color: #404040;
@@ -62,29 +64,22 @@
       background-color:lavender;
       padding: 0.5em;
     }
-    #logger{ height:10em; }
-    #index{ height:10em; }
+    #logger,#index{ height:10em; }
   </style>
   <script type="text/javascript">
     // 在控制台输出文字
     function p(string,redraw){
-      if(redraw){ document.getElementById("logger").innerHTML = "" }
-      document.getElementById("logger").innerHTML += "<br>"
-      document.getElementById("logger").innerHTML += string
-    }
-    // 添加事件监听
-    function add_event(element,event,listner){
-      if (element.addEventListener){ element.addEventListener(event,listner,false) }
-      else if (element.attachEvent){ element.attachEvent('on'+event,function(){ listner.call(element) } ) }
+      if(redraw){ $("#logger").html("") }
+      $("#logger").html( $("#logger").html() + "<br>" + string )
     }
     // 显示指定区域
     function show_area(id,status){
-      if(status){document.getElementById(id).style.display="inline"}
-      else{document.getElementById(id).style.display="none"}
+      if( status ){ $("#" + id ).css("display","inline") }
+      else{ $("#" + id ).css("display","none") }
     }
     // 取消互斥内容的选择状态
     function close_check(name,pos,status){
-      if(status){document.getElementsByName(name)[pos].checked = false}
+      if(status){ $("[name='"+ name + "']")[pos].checked = false }
     }
     // 获取结果列表
     function get_result(result_array){
@@ -120,7 +115,7 @@
     }
     // 将一个列表中选择的选项转换为对应的列表字符串
     function get_list(array_base,name_list,array_more){
-      var array = document.getElementsByName(array_base)
+      var array = $("[name='"+ array_base + "']")
       var result = ""
       var size = array.length
       if(array_more){size -= 1}
@@ -128,7 +123,7 @@
         if(array[i].checked){result = add_new_content(result,name_list[i])}
       }
       if(array_more){ if(array[size].checked){
-        result = add_new_content(result,document.getElementsByName(array_more)[0].value) }
+        result = add_new_content(result, $("[name='"+ array_more + "']")[0].value) }
       }
       return result
     }
@@ -142,7 +137,7 @@
     // 获取素材内容列表
     function get_content_list(){
       var result = ""
-      var array = document.getElementsByName("material")
+      var array = $("[name='material']")
       if(array[0].checked){
         result = add_new_content(result,get_list("gra_mat",["脸图素材","行走图素材","地图图块素材","战斗图素材","图标素材","动画素材"],"other_gra")
         )
@@ -154,7 +149,7 @@
         result = add_new_content(result,get_list("scr_mat",["RGSS1","RGSS2","RGSS3"],"other_scr"))
       }
       if(array[3].checked){
-        result = add_new_content(result,document.getElementsByName("other_mat")[0].value)
+        result = add_new_content(result, $("[name='other_mat']")[0].value)
       }
       return result
     }
@@ -186,7 +181,7 @@
     function get_rule_list(){
       var result = ""
       var array
-      array = document.getElementsByName("r1")
+      array = $("[name='r1']")
       if(array[0].checked){result += rule_foramt('不需要署名') }
         if(array[1].checked && array[2].checked){result += rule_foramt('不需要报告') }
       else{
@@ -197,7 +192,7 @@
       if(array[4].checked){result += rule_foramt('需要下载报告') }
       if(array[5].checked){result += rule_foramt('需要使用报告') }
 
-      array = [document.getElementsByName("r4"),document.getElementsByName("r5"),document.getElementsByName("r6")]
+      array = [ $("[name='r4']"), $("[name='r5']"), $("[name='r6']") ]
 
       if(array[0][0].checked && array[0][1].checked && array[0][2].checked && array[0][3].checked && array[1][0].checked && array[1][1].checked){result += rule_foramt('自由地用于任何游戏中')}
       else{
@@ -228,14 +223,14 @@
       if(array[2][2].checked){result += rule_foramt('禁止用于题材不适当的游戏中') }
 
 
-      array = document.getElementsByName("r2")
+      array = $("[name='r2']")
       if(array[0].checked){result += rule_foramt('限制使用素材的软件') }
       if(array[1].checked){
         if(array[2].checked){result += rule_foramt('允许在不破坏素材的情况下进行加工')}
         else{result += rule_foramt('允许加工') }
       }
 
-      array = document.getElementsByName("r3")
+      array = $("[name='r3']")
       if(array[0].checked){result += rule_foramt('可以自由地二次配布') }
       if(array[1].checked){result += rule_foramt('加工后可发布') }
       if(array[2].checked){result += rule_foramt('禁止转载·二次配布') }
@@ -260,109 +255,101 @@
     }
     // 输出目录编辑页面网址
     function show_index_url(){
-      var func = function(element,list,content_list){
+      var func = function(list,content_list){
         for (var i = 0; i < list.length; i += 1) {
           if(!content_list[i].checked){ continue }
-          element.innerHTML += index_foramt(list[i])
+          $("#index").html(  $("#index").html() + index_foramt(list[i]) )
         }
       }
-      var element = document.getElementById("index")
-      element.innerHTML = "点击地址编辑素材目录：<br><p>"
-      func(element,["脸图","行走图","图块","战斗图","图标","动画","其他"],document.getElementsByName("gra_mat"))
-      func(element,["音乐","音效"],document.getElementsByName("aud_mat"))
-      func(element,["RGSS1","RGSS2","RGSS3"],document.getElementsByName("scr_mat"))
-      element.innerHTML += "</p>"
+      $("#index").html("点击地址编辑素材目录：<br><p>")
+      func(["脸图","行走图","图块","战斗图","图标","动画","其他"], $("[name='gra_mat']") )
+      func(["音乐","音效"], $("[name='aud_mat']") )
+      func(["RGSS1","RGSS2","RGSS3"], $("[name='scr_mat']"))
+      $("#index").html(  $("#index").html() + "</p>" )
     }
-    // 检查是否有未填的关键文本框
-    function check_input(id){
-      var value = document.getElementById(id).value
-      if(value == ""){document.getElementById(id).className = "error_input"}
-      else{document.getElementById(id).className = "input"}
-      return value
-    }
-    // 检查是否有未填的关键信息
-    function check_area(value,id){
-      if(value == ""){document.getElementById(id).className = "error_area"}
-      else{document.getElementById(id).className = ""}
+    // 检查信息是否未填
+    function check_null(value,id){
+      if(value == ""){ $(id).addClass("error") }
+      else{ $(id).removeClass("error") }
       return value
     }
     // 显示最终结果
     function show_result(){
       var result_array = [0]
-      result_array[0] = check_input("name")
-      result_array[1] = check_input("host")
-      result_array[2] = url_format(check_input("url"))
-      result_array[3] = check_area(get_list("language",["日语","英语","中文"],"other_lan"),"language_a")
-      result_array[4] = check_area(get_list("gfw",["有","无"]),"gfw_a")
-      result_array[5] = check_area(get_content_list(),"content")
-      result_array[6] = url_format(check_input("addr"))
-      result_array[7] = url_format(check_input("rule"))
+      result_array[0] = check_null( $('#name').val(),'#name' )
+      result_array[1] = check_null( $('#host').val(),'#host' )
+      result_array[2] = url_format( check_null( $('#url').val(),'#url' ) )
+      result_array[3] = check_null(get_list("language",["日语","英语","中文"],"other_lan"),"#language_a")
+      result_array[4] = check_null(get_list("gfw",["有","无"]),"#gfw_a")
+      result_array[5] = check_null(get_content_list(),"#content")
+      result_array[6] = url_format( check_null( $('#addr').val(),'#addr' ) )
+      result_array[7] = url_format( check_null( $('#rule').val(),'#rule' ) )
       result_array[8] = get_rule_list()
-      result_array[9] = check_input("up")
+      result_array[9] = check_null( $('#up').val(),'#up' )
       result_array[10] = get_time()
-      result_array[11] = document.getElementById("etc").value.replace(/\n/g,'</p><p>') + '</p>'
-      document.getElementById("result").value = get_result(result_array)
+      result_array[11] = $("#etc").val().replace(/\n/g,'</p><p>') + '</p>'
+
+      $("#result").val( get_result(result_array) )
 
       show_index_url()
 
-      p("预览结果<br><br>" + document.getElementById("result").value , true)
+      p("预览结果<br><br>" + $("#result").val() , true)
     }
     // 网址自动填充
     function url_auto_complete(parm) {
-      var list = ["url", "addr", "rule"]
-      var element = document.getElementById( parm )
-      var value
+      var list = $("#url, #addr, #rule").toArray()
       for( var i = 0; i < list.length; i += 1){
-        if( parm == list[i] ){ continue }
-        value = document.getElementById(list[i]).value
-        if( value && element.value != value ) {
-          element.value = value
+        if( parm == list[i].id ){ continue }
+        var value = list[i].value
+        if( value && $("#" + parm).val() != value ) {
+          $("#" + parm).val( value )
           break
         }
       }
     }
     // 为页面中的元素添加事件
     function add_listner(){
-      var i,list
-      add_event(document.getElementById("show_result"),'click',show_result)
-      add_event(document.getElementById("reload_page"),'click',function(){ document.location.reload() })
-      add_event(document.getElementById("post_article"),'click',function(){ window.open("http://www.lofter.com/blog/rmproject/new/text/") })
 
-      add_event(document.getElementById("result"),'click',function(){ this.focus(); this.select() })
-      list = document.getElementsByTagName("input")
-      for(i = 0 ; i < list.length ; i += 1 ){
-        if (list[i].getAttribute('type') != 'text' && list[i].getAttribute('type') != null){ continue }
-        add_event(list[i],'click',function(){ this.focus(); this.select() })
-      }
-      for(i = 0 ; i < list.length ; i += 1 ){
-        if (list[i].getAttribute('func') != 'more_button'){ continue }
-        add_event(list[i],'click',function(){ show_area(this.getAttribute('value'),this.checked) })
-      }
+      $("#show_result").click( show_result )
+      $("#reload_page").click( function(){ document.location.reload() } )
+      $("#post_article").click( function(){ window.open("http://www.lofter.com/blog/rmproject/new/text/") } )
 
-      add_event(document.getElementById("url_button"),'click',function(){
-            var url = document.getElementById("url").value
-            if(!url) { return }
-            url = "http://miaowm5.github.io/rmproject/bookmarklet/index.html#" + url.substr(7)
-            window.open(url)
-          }
-        )
-      add_event(document.getElementById("addr_button"),'click',function(){ url_auto_complete("addr") })
-      add_event(document.getElementById("rule_button"),'click',function(){ url_auto_complete("rule") })
+      $("#result").click( function(){ this.focus(); this.select() } )
+      $(":text").click( function(){ this.focus(); this.select() } )
+
+      $("[func='more_button']").click( function(){ show_area( $(this).attr("value"), this.checked) } )
+
+      $("#url_button").click( function(){
+          var url = $("#url").val(); if(!url) { return }
+          window.open("http://miaowm5.github.io/rmproject/bookmarklet/index.html#" + url.substr(7))
+        }
+      )
+      $("#addr_button").click( function(){  url_auto_complete("addr") } );
+      $("#rule_button").click( function(){  url_auto_complete("rule") } );
+    }
+    // 设置元素位置
+    function set_position(){
+      $(".quick_button").css("left",function(){
+        var pos = $(".input").width() - $(".quick_button").width()
+        return pos - $(".input").width() * 0.02 + "px"
+        }
+      )
     }
     // 页面加载完成后执行的操作
-    function load_over(){
-      // 添加事件监听
+    $(document).ready(function(){
+      // 添加事件
       add_listner()
+      // 设置元素位置
+      set_position()
       // 快速填入翻译者
-      document.getElementById('up').value = window.location.hash.slice(1)
-    }
+      $("#up").val( window.location.hash.slice(1) )
+    })
   </script>
 </head>
-<body onload="load_over()">
+<body>
   <!-- 最终结果 -->
   <div id="result_area">
-    <button id="show_result">输出结果</button><button id="post_article">发布文章</button>
-    <button id="reload_page">清空输入</button><br>
+    <button id="show_result">输出结果</button><button id="post_article">发布文章</button><button id="reload_page">清空输入</button><br>
     <textarea id="result" tabIndex="99"></textarea>
     <div id="logger">控制台</div>
     <div id="index"></div>
