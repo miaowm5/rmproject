@@ -254,20 +254,17 @@
     }
     // 输出目录编辑页面网址
     function show_index_url(){
-      function show_index_url2(){}
-      var func = new show_index_url2();
-      func.mymethod = function(element,list,content_list){
-        var i
-        for (i = 0; i < list.length; i += 1) {
+      var func = function(element,list,content_list){
+        for (var i = 0; i < list.length; i += 1) {
           if(!content_list[i].checked){ continue }
           element.innerHTML += index_foramt(list[i])
-        };
+        }
       }
       var element = document.getElementById("index")
       element.innerHTML = "点击地址编辑素材目录：<br><p>"
-      func.mymethod(element,["脸图","行走图","图块","战斗图","图标","动画","其他"],document.getElementsByName("gra_mat"))
-      func.mymethod(element,["音乐","音效"],document.getElementsByName("aud_mat"))
-      func.mymethod(element,["RGSS1","RGSS2","RGSS3"],document.getElementsByName("scr_mat"))
+      func(element,["脸图","行走图","图块","战斗图","图标","动画","其他"],document.getElementsByName("gra_mat"))
+      func(element,["音乐","音效"],document.getElementsByName("aud_mat"))
+      func(element,["RGSS1","RGSS2","RGSS3"],document.getElementsByName("scr_mat"))
       element.innerHTML += "</p>"
     }
     // 检查是否有未填的关键文本框
@@ -346,7 +343,10 @@
     }
     // 页面加载完成后执行的操作
     function load_over(){
+      // 添加事件监听
       add_listner()
+      // 快速填入翻译者
+      document.getElementById('up').value = window.location.hash.slice(1)
     }
   </script>
 </head>
@@ -502,8 +502,5 @@
     <!-- 备注 -->
     <tr><td>备注</td><td><textarea id="etc" class="input"></textarea></td></tr>
   </table>
-  <script type="text/javascript">
-    document.getElementById('up').value = window.location.hash.slice(1)
-  </script>
 </body>
 </html>
