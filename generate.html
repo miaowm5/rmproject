@@ -52,7 +52,7 @@
       width:96%;
       margin-top: 0.5em;
     }
-    #reload_page{
+    #post_article,#reload_page{
       margin-left: 1em;
     }
     #result_area > div {
@@ -326,8 +326,9 @@
       var i,list
       add_event(document.getElementById("show_result"),'click',show_result)
       add_event(document.getElementById("reload_page"),'click',function(){ document.location.reload() })
-      add_event(document.getElementById("result"),'click',function(){ this.focus(); this.select() })
+      add_event(document.getElementById("post_article"),'click',function(){ window.open("http://www.lofter.com/blog/rmproject/new/text/") })
 
+      add_event(document.getElementById("result"),'click',function(){ this.focus(); this.select() })
       list = document.getElementsByTagName("input")
       for(i = 0 ; i < list.length ; i += 1 ){
         if (list[i].getAttribute('type') != 'text' && list[i].getAttribute('type') != null){ continue }
@@ -360,7 +361,8 @@
 <body onload="load_over()">
   <!-- 最终结果 -->
   <div id="result_area">
-    <button id="show_result">输出结果</button><button id="reload_page">清空输入</button><br>
+    <button id="show_result">输出结果</button><button id="post_article">发布文章</button>
+    <button id="reload_page">清空输入</button><br>
     <textarea id="result" tabIndex="99"></textarea>
     <div id="logger">控制台</div>
     <div id="index"></div>
