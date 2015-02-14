@@ -1,6 +1,8 @@
 ---
 ---
 
+<p><a href="{{ site.baseurl }}/generate.html">generate</a></p>
+
 {% for post in site.posts %}
   <a href="{{ post.url | prepend: site.baseurl }}">{{ post.title }}</a>
 {% endfor %}
