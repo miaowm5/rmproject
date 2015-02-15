@@ -677,6 +677,42 @@
   <url_regexp>/.*moomoo.asablo.*/</url_regexp>
   <project_url>5bbc0fa</project_url>
 </site>
+<site id="168">
+  <url_regexp>/.*geocities.*d_p_orchestra.*/</url_regexp>
+  <project_url>5d87cdc</project_url>
+</site>
+<site id="169">
+  <url_regexp>/.*oldscratch666.*fc2.*/</url_regexp>
+  <project_url>5d8c933</project_url>
+</site>
+<site id="170">
+  <url_regexp>/.*palehanada.*fc2.*/</url_regexp>
+  <project_url>5d8c9ac</project_url>
+</site>
+<site id="171">
+  <url_regexp>/.*.*/</url_regexp>
+  <project_url></project_url>
+</site>
+<site id="172">
+  <url_regexp>/.*tabinoyadokari.*fc2.*/</url_regexp>
+  <project_url>5d9cb6f</project_url>
+</site>
+<site id="173">
+  <url_regexp>/.*amachamusic.chagasi.*/</url_regexp>
+  <project_url>5ddb915</project_url>
+</site>
+<site id="174">
+  <url_regexp>/.*ontama-m.*/</url_regexp>
+  <project_url>5ddb7f3</project_url>
+</site>
+<site id="175">
+  <url_regexp>/.*otosozai.*/</url_regexp>
+  <project_url>5ddb83d</project_url>
+</site>
+<site id="176">
+  <url_regexp>/.*mno3.*soundseekrs_blog.*/</url_regexp>
+  <project_url>5ddb8ac</project_url>
+</site>
 <!-- <site id="">
   <url_regexp>/.*.*/</url_regexp>
   <project_url></project_url>
