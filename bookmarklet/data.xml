@@ -690,26 +690,22 @@
   <project_url>5d8c9ac</project_url>
 </site>
 <site id="171">
-  <url_regexp>/.*.*/</url_regexp>
-  <project_url></project_url>
-</site>
-<site id="172">
   <url_regexp>/.*tabinoyadokari.*fc2.*/</url_regexp>
   <project_url>5d9cb6f</project_url>
 </site>
-<site id="173">
+<site id="172">
   <url_regexp>/.*amachamusic.chagasi.*/</url_regexp>
   <project_url>5ddb915</project_url>
 </site>
-<site id="174">
+<site id="173">
   <url_regexp>/.*ontama-m.*/</url_regexp>
   <project_url>5ddb7f3</project_url>
 </site>
-<site id="175">
+<site id="174">
   <url_regexp>/.*otosozai.*/</url_regexp>
   <project_url>5ddb83d</project_url>
 </site>
-<site id="176">
+<site id="175">
   <url_regexp>/.*mno3.*soundseekrs_blog.*/</url_regexp>
   <project_url>5ddb8ac</project_url>
 </site>
