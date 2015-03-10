@@ -2,34 +2,20 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<script src="http://libs.baidu.com/jquery/1.10.2/jquery.min.js"></script>
   <script>
-    function write_hint(text){
-      document.getElementById('hint').innerHTML = text
-    }
-    function search_url(){
-      var xmlhttp = null;
-      if (window.XMLHttpRequest){ xmlhttp=new XMLHttpRequest(); }
-      else if (window.ActiveXObject){ xmlhttp=new ActiveXObject("Microsoft.XMLHTTP"); }
-      if (xmlhttp == null){
-        write_hint("您的土鳖浏览器居然连XML都不支持……")
-        return
-      }
-      xmlhttp.open("GET","data.xml",false);
-      xmlhttp.send(null);
-      var list = xmlhttp.responseXML.documentElement.getElementsByTagName('site')
-      var data
-      for (var i = 0; i < list.length; i += 1) {
-        data = list[i].getElementsByTagName('url_regexp')[0]
-        data = data.textContent || data.text
-        if(eval(data).test(window.location.hash)){
-          data = list[i].getElementsByTagName("project_url")[0]
-          data = data.textContent || data.text
-          window.location = "http://rmproject.lofter.com/post/3b5924_" + data
-          return
+    function write_hint(text){ $('#hint').html(text) }
+    $(document).ready( function(){
+      $.getJSON("data.json",function(data){
+        for(var i = 0; i < data.site.length; i+= 1){
+          var site = data.site[i]
+          if(eval(site.url_regexp).test(window.location.hash)){
+            window.location = "http://rmproject.lofter.com/post/3b5924_" + site.project_url
+          }
         }
-      }
-      write_hint("目前我们没有这个网站的数据TvT")
-    }
+        write_hint("目前数据库中还没有添加这个网站的数据 TvT")
+      })
+    })
   </script>
 </head>
 <body>
@@ -37,8 +23,5 @@
     努力查找数据中...</br>
     若长时间停留在这个页面请刷新重试
   </h1>
-  <script >
-    search_url()
-  </script>
 </body>
 </html>
