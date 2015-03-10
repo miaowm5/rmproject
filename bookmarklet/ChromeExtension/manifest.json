@@ -1,0 +1,16 @@
+{
+  "name": "授权素材推广计划",
+  "manifest_version": 2,
+  "version": "1.0",
+  "description": "查询某个素材网站是否收录在授权素材推广计划中，若存在，则快速跳转到相应页面",
+  "icons": { "128": "icon.png" },
+  "browser_action": {
+    "default_icon": "icon.png"
+  },
+  "permissions": [ "activeTab" ],
+  "background": {
+    "scripts": ["main.js"],
+    "persistent": false
+  }
+}
+
