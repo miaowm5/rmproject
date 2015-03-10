@@ -11,6 +11,7 @@
           var site = data.site[i]
           if(eval(site.url_regexp).test(window.location.hash)){
             window.location = "http://rmproject.lofter.com/post/3b5924_" + site.project_url
+            return
           }
         }
         write_hint("目前数据库中还没有添加这个网站的数据 TvT")
