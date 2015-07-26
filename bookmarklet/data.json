@@ -400,6 +400,10 @@
     { "url_regexp": "/.*atpages.*mikadan.*/",
         "project_url": "6e67978" },
     { "url_regexp": "/.*biglobe.*~cawcaw.*/",
-        "project_url": "72516ab" }
+        "project_url": "72516ab" },
+    { "url_regexp": "/.*loo.sakura.ne.*/",
+        "project_url": "7337561" },
+    { "url_regexp": "/.*fayforest.sakura.*/",
+        "project_url": "74bef0f" }
   ]
 }
