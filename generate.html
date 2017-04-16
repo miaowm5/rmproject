@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta http-equiv="content-type" content="text/html;charset=utf-8"/>
-  <script src="http://code.jquery.com/jquery-1.11.2.min.js"></script>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
   <script type="text/javascript">
     !window.jQuery && document.write('<script src="javascripts\/jquery-1.11.2.min.js"><\/script>');
   </script>
@@ -149,7 +149,7 @@
         result = add_new_content(result,get_list("aud_mat",["音乐素材","音效素材"],"other_aud"))
       }
       if(array[2].checked){
-        result = add_new_content(result,get_list("scr_mat",["RGSS1","RGSS2","RGSS3"],"other_scr"))
+        result = add_new_content(result,get_list("scr_mat",["RGSS1","RGSS2","RGSS3","RMMV"],"other_scr"))
       }
       if(array[3].checked){
         result = add_new_content(result, $("[name='other_mat']")[0].value)
@@ -252,7 +252,7 @@
 
         '音乐' : '166cfbd', '音效' : '166cfc6',
 
-        'RGSS1' : '166cfcc', 'RGSS2' : '166cfce', 'RGSS3' : '166cfd3'
+        'RGSS1' : '166cfcc', 'RGSS2' : '166cfce', 'RGSS3' : '166cfd3', 'RMMV': 'eed3bd4',
       }
       return url_format('http://www.lofter.com/edit/3e26fe_'+list[rule]) + "</p><p>"
     }
@@ -267,7 +267,7 @@
       $("#index").html("点击地址编辑素材目录：<br><p>")
       func(["脸图","行走图","图块","战斗图","图标","动画","其他"], $("[name='gra_mat']") )
       func(["音乐","音效"], $("[name='aud_mat']") )
-      func(["RGSS1","RGSS2","RGSS3"], $("[name='scr_mat']"))
+      func(["RGSS1","RGSS2","RGSS3","RMMV"], $("[name='scr_mat']"))
       $("#index").html(  $("#index").html() + "</p>" )
     }
     // 检查信息是否未填
@@ -412,6 +412,7 @@
           <label><input name="scr_mat" type="checkbox" class="child"/>RGSS1</label><br>
           <label><input name="scr_mat" type="checkbox" class="child"/>RGSS2</label><br>
           <label><input name="scr_mat" type="checkbox" class="child"/>RGSS3</label><br>
+          <label><input name="scr_mat" type="checkbox" class="child"/>RMMV</label><br>
           <label><input name="scr_mat" type="checkbox" class="child"
             value="other_scr_mat" func="more_button" />其他脚本素材</label><br>
           <div id="other_scr_mat" style="display:none"><input name="other_scr" class="child"/><br></div>
